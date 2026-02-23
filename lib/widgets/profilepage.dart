@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:shopit/consta/constant.dart';
 
 class Profilepage extends StatelessWidget {
   const Profilepage({super.key});
