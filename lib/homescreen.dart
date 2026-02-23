@@ -157,7 +157,16 @@ class HomePage extends StatelessWidget {
                     const SizedBox(height: 5),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 4.0),
-                      child: Text(item['name']),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            textAlign: TextAlign.center,
+                            item['name'],
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                        ],
+                      ),
                     ),
                   ],
                 ),
