@@ -86,22 +86,26 @@ class ProfileComplete extends StatelessWidget {
                   _buildMenuTile(
                     icon: Icons.shopping_bag,
                     title: 'My Orders',
-                    onTap: () {},
+                    context: context,
+                    action: 'orders',
                   ),
                   _buildMenuTile(
                     icon: Icons.favorite,
                     title: 'Wishlist',
-                    onTap: () {},
+                    context: context,
+                    action: 'wishlist',
                   ),
                   _buildMenuTile(
                     icon: Icons.location_on,
                     title: 'Addresses',
-                    onTap: () {},
+                    context: context,
+                    action: 'addresses',
                   ),
                   _buildMenuTile(
                     icon: Icons.payment,
                     title: 'Payment Methods',
-                    onTap: () {},
+                    context: context,
+                    action: 'payment',
                   ),
                 ],
               ),
@@ -127,17 +131,20 @@ class ProfileComplete extends StatelessWidget {
                   _buildMenuTile(
                     icon: Icons.notifications,
                     title: 'Notifications',
-                    onTap: () {},
+                    context: context,
+                    action: 'notifications',
                   ),
                   _buildMenuTile(
                     icon: Icons.security,
                     title: 'Privacy & Security',
-                    onTap: () {},
+                    context: context,
+                    action: 'security',
                   ),
                   _buildMenuTile(
                     icon: Icons.help,
                     title: 'Help & Support',
-                    onTap: () {},
+                    context: context,
+                    action: 'help',
                   ),
                 ],
               ),
@@ -158,7 +165,9 @@ class ProfileComplete extends StatelessWidget {
                       borderRadius: BorderRadius.circular(8),
                     ),
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    _handleAction('logout', context);
+                  },
                   child: const Text(
                     'Logout',
                     style: TextStyle(
@@ -206,7 +215,8 @@ class ProfileComplete extends StatelessWidget {
   static Widget _buildMenuTile({
     required IconData icon,
     required String title,
-    required VoidCallback onTap,
+    required BuildContext context,
+    required String action,
   }) {
     return Container(
       margin: const EdgeInsets.only(bottom: 12),
@@ -218,8 +228,56 @@ class ProfileComplete extends StatelessWidget {
         leading: Icon(icon, color: Colors.blue),
         title: Text(title),
         trailing: const Icon(Icons.arrow_forward_ios, size: 16),
-        onTap: onTap,
+        onTap: () {
+          _handleAction(action, context);
+        },
       ),
     );
+  }
+
+  static void _handleAction(String action, BuildContext context) {
+    switch (action) {
+      case 'orders':
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Opening My Orders...')),
+        );
+        // Navigator.push(context, MaterialPageRoute(builder: (_) => OrdersPage()));
+        break;
+      case 'wishlist':
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Opening Wishlist...')),
+        );
+        break;
+      case 'addresses':
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Opening Addresses...')),
+        );
+        break;
+      case 'payment':
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Opening Payment Methods...')),
+        );
+        break;
+      case 'notifications':
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Opening Notifications...')),
+        );
+        break;
+      case 'security':
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Opening Security...')),
+        );
+        break;
+      case 'help':
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Opening Help & Support...')),
+        );
+        break;
+      case 'logout':
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Logging out...')),
+        );
+        break;
+    }
   }
 }
