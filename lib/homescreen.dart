@@ -85,7 +85,7 @@ class _HomescreenState extends State<Homescreen> {
     _pages = [
       HomePage(products: products, searchController: _searchController),
       const Searchpage(),
-      const Profilepage(),
+      const ProfileComplete(),
     ];
   }
 
