@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+// import 'package:shopit/screens/cart.dart';
 import 'package:shopit/widgets/navigationbar.dart' show BottomNavBar;
 import 'package:shopit/widgets/profilepage.dart';
 import 'package:shopit/widgets/search.dart';
-import 'package:shopit/widgets/searchpage.dart';
+import 'package:shopit/widgets/cart.dart';
 
 class Homescreen extends StatefulWidget {
   const Homescreen({super.key});
@@ -12,11 +13,9 @@ class Homescreen extends StatefulWidget {
 }
 
 class _HomescreenState extends State<Homescreen> {
-  int _selectedIndex = 0; // bottom nav selected index
-
+  int _selectedIndex = 0;
   final TextEditingController _searchController = TextEditingController();
 
-  // Your product list
   final List<Map<String, dynamic>> products = [
     {
       "id": 1,
@@ -68,23 +67,20 @@ class _HomescreenState extends State<Homescreen> {
       "description": "Comfortable running shoes",
     },
   ];
-
-  // bottom nav tap callback
   void _onNavTap(int index) {
     setState(() {
       _selectedIndex = index;
     });
   }
 
-  // List of pages
-  late final List<dynamic> _pages;
+  late final List<Widget> _pages;
 
   @override
   void initState() {
     super.initState();
     _pages = [
       HomePage(products: products, searchController: _searchController),
-      const Searchpage(),
+      CartPage(),
       const ProfileComplete(),
     ];
   }
@@ -98,9 +94,7 @@ class _HomescreenState extends State<Homescreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: _pages[_selectedIndex], // show current page
-      ),
+      body: SafeArea(child: _pages[_selectedIndex]),
       bottomNavigationBar: BottomNavBar(
         selectedIndex: _selectedIndex,
         onTap: _onNavTap,
@@ -108,10 +102,6 @@ class _HomescreenState extends State<Homescreen> {
     );
   }
 }
-
-// ---------------------------
-// Separate HomePage widget
-// ---------------------------
 
 class HomePage extends StatelessWidget {
   final List<Map<String, dynamic>> products;
@@ -125,9 +115,11 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CustomScrollView(
-      slivers: [
-        SliverToBoxAdapter(
+    return Column(
+      children: [
+        SizedBox(
+          height: 100,
+          width: double.infinity,
           child: SearchWidget(
             controller: searchController,
             onSearch: () {
@@ -135,77 +127,100 @@ class HomePage extends StatelessWidget {
             },
           ),
         ),
-
-        // top container here if needed
-        SliverToBoxAdapter(
-          child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-              Container(
-                color: Colors.red,
-                width: MediaQuery.of(context).size.width * 0.9,
-                height: MediaQuery.of(context).size.height * 0.040,
-              )
-            ],
-          ),
-        ),
-
-        // top container end here
-        SliverGrid(
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
-            childAspectRatio: 0.6,
-            crossAxisSpacing: 8,
-            mainAxisSpacing: 8,
-          ),
-          delegate: SliverChildBuilderDelegate((context, index) {
-            final item = products[index];
-            return Card(
-              elevation: 5,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(12.0),
-                        child: Icon(
-                          Icons.favorite_border,
-                          color: const Color.fromARGB(255, 24, 38, 236),
+        Expanded(
+          child: GridView.builder(
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+              mainAxisSpacing: 10,
+              childAspectRatio: 0.75,
+            ),
+            itemCount: products.length,
+            itemBuilder: (context, index) {
+              final product = products[index];
+              return Container(
+                margin: const EdgeInsets.all(8),
+                decoration: BoxDecoration(
+                  color: const Color.fromARGB(255, 109, 59, 178),
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Expanded(
+                      child: ClipRRect(
+                        borderRadius: const BorderRadius.vertical(
+                          top: Radius.circular(8),
+                        ),
+                        child: Image.asset(
+                          product['image'],
+                          fit: BoxFit.cover,
+                          width: double.infinity,
                         ),
                       ),
-                    ],
-                  ),
-                  Expanded(
-                    child: Image.asset(item['image'], fit: BoxFit.contain),
-                  ),
-                  const SizedBox(height: 5),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 4.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Expanded(
-                          child: Padding(
-                            padding: const EdgeInsets.all(10.0),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 10,
+                        vertical: 5,
+                      ),
+                      child: Text(
+                        product['name'],
+                        style: const TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 10),
+                      child: Row(
+                        children: [
+                          Expanded(
                             child: Text(
-                              textAlign: TextAlign.start,
-                              item['name'],
-                              style: TextStyle(fontWeight: FontWeight.bold),
+                              "\$${product['price']}",
+                              style: const TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white,
+                              ),
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
                             ),
                           ),
-                        ),
-                        const SizedBox(width: 4),
-                        IconButton(
-                          onPressed: () {},
-                          icon: Icon(Icons.shopping_cart,size: 30,),
-                        ),
-                      ],
+                          IconButton(
+                            onPressed: () {
+                              Cart.items.add({
+                                'name': product['name'],
+                                'price': product['price'],
+                                'image': product['image'],
+                              });
+                              // Navigate to cart page
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => CartPage(),
+                                ),
+                              );
+                            },
+                            icon: const Icon(
+                              Icons.add_shopping_cart,
+                              color: Colors.white,
+                            ),
+                            padding: EdgeInsets.zero,
+                            constraints: const BoxConstraints(),
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                ],
-              ),
-            );
-          }, childCount: products.length),
+                    const SizedBox(height: 5),
+                  ],
+                ),
+              );
+            },
+          ),
         ),
       ],
     );
