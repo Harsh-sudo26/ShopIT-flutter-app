@@ -28,35 +28,35 @@ class _HomescreenState extends State<Homescreen> {
       "id": 2,
       "name": "Apple Watch",
       "price": 199.99,
-      "image": "assets/images/nike.png",
+      "image": "assets/images/apple.png",
       "description": "Smart watch with fitness tracking",
     },
     {
       "id": 3,
       "name": "Samsung Headphones",
       "price": 89.99,
-      "image": "assets/images/nike.png",
+      "image": "assets/images/headphone.png",
       "description": "Noise cancelling headphones",
     },
     {
       "id": 4,
       "name": "Backpack",
       "price": 39.99,
-      "image": "assets/images/nike.png",
+      "image": "assets/images/bag.png",
       "description": "Waterproof travel backpack",
     },
     {
       "id": 1,
       "name": "Nike Shoes",
       "price": 59.99,
-      "image": "assets/images/nike.png",
+      "image": "assets/images/apple.png",
       "description": "Comfortable running shoes",
     },
     {
       "id": 1,
       "name": "Nike Shoes",
       "price": 59.99,
-      "image": "assets/images/nike.png",
+      "image": "assets/images/headphone.png",
       "description": "Comfortable running shoes",
     },
     {
@@ -197,11 +197,16 @@ class HomePage extends StatelessWidget {
                                 'price': product['price'],
                                 'image': product['image'],
                               });
-                              
                             },
-                            icon: const Icon(
-                              Icons.add_shopping_cart,
-                              color: Colors.white,
+                            icon: Padding(
+                              padding: const EdgeInsets.only(
+                                right: 15,
+                                bottom: 5,
+                              ),
+                              child: Icon(
+                                Icons.add_shopping_cart,
+                                color: Colors.white,
+                              ),
                             ),
                             padding: EdgeInsets.zero,
                             constraints: const BoxConstraints(),
