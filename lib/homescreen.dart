@@ -125,54 +125,81 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        SearchWidget(
-          controller: searchController,
-          onSearch: () {
-            print("Search: ${searchController.text}");
-          },
-        ),
-        Row(children: [Text("welcome to app")]),
-        Expanded(
-          child: GridView.builder(
-            padding: const EdgeInsets.all(8),
-            itemCount: products.length,
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-              childAspectRatio: 0.6,
-              crossAxisSpacing: 8,
-              mainAxisSpacing: 8,
-            ),
-            itemBuilder: (context, index) {
-              final item = products[index];
-              return Card(
-                elevation: 5,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    Expanded(
-                      child: Image.asset(item['image'], fit: BoxFit.contain),
-                    ),
-                    const SizedBox(height: 5),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 4.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            textAlign: TextAlign.center,
-                            item['name'],
-                            style: TextStyle(fontWeight: FontWeight.bold),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              );
+    return CustomScrollView(
+      slivers: [
+        SliverToBoxAdapter(
+          child: SearchWidget(
+            controller: searchController,
+            onSearch: () {
+              print("Search: ${searchController.text}");
             },
           ),
+        ),
+
+        // top container here if needed
+        SliverToBoxAdapter(
+          child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+              
+            ],
+          ),
+        ),
+
+        // top container end here
+        SliverGrid(
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            childAspectRatio: 0.6,
+            crossAxisSpacing: 8,
+            mainAxisSpacing: 8,
+          ),
+          delegate: SliverChildBuilderDelegate((context, index) {
+            final item = products[index];
+            return Card(
+              elevation: 5,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(12.0),
+                        child: Icon(
+                          Icons.favorite_border,
+                          color: const Color.fromARGB(255, 24, 38, 236),
+                        ),
+                      ),
+                    ],
+                  ),
+                  Expanded(
+                    child: Image.asset(item['image'], fit: BoxFit.contain),
+                  ),
+                  const SizedBox(height: 5),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 4.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Expanded(
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              textAlign: TextAlign.start,
+                              item['name'],
+                              style: TextStyle(fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                        ),
+                        const SizedBox(width: 4),
+                        IconButton(onPressed: (){
+                        }, icon: Icon(Icons.shopping_cart)),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            );
+          }, childCount: products.length),
         ),
       ],
     );
