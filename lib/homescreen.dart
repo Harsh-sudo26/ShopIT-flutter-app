@@ -139,7 +139,11 @@ class HomePage extends StatelessWidget {
         // top container here if needed
         SliverToBoxAdapter(
           child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-              
+              Container(
+                color: Colors.red,
+                width: MediaQuery.of(context).size.width * 0.9,
+                height: MediaQuery.of(context).size.height * 0.040,
+              )
             ],
           ),
         ),
@@ -182,7 +186,7 @@ class HomePage extends StatelessWidget {
                       children: [
                         Expanded(
                           child: Padding(
-                            padding: const EdgeInsets.all(8.0),
+                            padding: const EdgeInsets.all(10.0),
                             child: Text(
                               textAlign: TextAlign.start,
                               item['name'],
@@ -191,8 +195,10 @@ class HomePage extends StatelessWidget {
                           ),
                         ),
                         const SizedBox(width: 4),
-                        IconButton(onPressed: (){
-                        }, icon: Icon(Icons.shopping_cart)),
+                        IconButton(
+                          onPressed: () {},
+                          icon: Icon(Icons.shopping_cart,size: 30,),
+                        ),
                       ],
                     ),
                   ),
