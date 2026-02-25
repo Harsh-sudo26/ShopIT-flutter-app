@@ -17,17 +17,17 @@ class BottomNavBar extends StatelessWidget {
       onDestinationSelected: onTap,
       destinations: const [
         NavigationDestination(
-          icon: Icon(Icons.home_outlined),
+          icon: Icon(Icons.home_outlined,color: Colors.purple,),
           selectedIcon: Icon(Icons.home),
           label: 'Home',
         ),
         NavigationDestination(
-          icon: Icon(Icons.shopping_cart),
+          icon: Icon(Icons.shopping_cart,color: Colors.purple,),
           selectedIcon: Icon(Icons.shopping_cart),
           label: 'Cart',
         ),
         NavigationDestination(
-          icon: Icon(Icons.person_outline),
+          icon: Icon(Icons.person_outline,color: Colors.purple,),
           selectedIcon: Icon(Icons.person),
           label: 'Profile',
         ),

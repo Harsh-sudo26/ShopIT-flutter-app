@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 // import 'package:shopit/screens/cart.dart';
 import 'package:shopit/widgets/navigationbar.dart' show BottomNavBar;
-import 'package:shopit/widgets/profilepage.dart';
+import 'package:shopit/screens/profilepage.dart';
 import 'package:shopit/widgets/search.dart';
-import 'package:shopit/widgets/cart.dart';
+import 'package:shopit/screens/cart.dart';
 
 class Homescreen extends StatefulWidget {
   const Homescreen({super.key});
@@ -197,13 +197,7 @@ class HomePage extends StatelessWidget {
                                 'price': product['price'],
                                 'image': product['image'],
                               });
-                              // Navigate to cart page
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => CartPage(),
-                                ),
-                              );
+                              
                             },
                             icon: const Icon(
                               Icons.add_shopping_cart,
