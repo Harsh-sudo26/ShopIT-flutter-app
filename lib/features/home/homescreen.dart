@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:shopit/screens/topnav.dart';
+import 'package:shopit/features/home/topnav.dart';
 // import 'package:shopit/screens/cart.dart';
-import 'package:shopit/widgets/navigationbar.dart' show BottomNavBar;
-import 'package:shopit/screens/profilepage.dart';
-import 'package:shopit/widgets/search.dart';
-import 'package:shopit/screens/cart.dart';
+import 'package:shopit/core/widgets/navigationbar.dart' show BottomNavBar;
+import 'package:shopit/features/profile/profilepage.dart';
+import 'package:shopit/core/widgets/search.dart';
+import 'package:shopit/features/cart/cart.dart';
 
 class Homescreen extends StatefulWidget {
   const Homescreen({super.key});

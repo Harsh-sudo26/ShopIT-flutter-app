@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:shopit/consta/constant.dart';
-import 'package:shopit/screens/login.dart';
-import 'package:shopit/screens/signup.dart';
-import 'package:shopit/widgets/buttons.dart';
+import 'package:shopit/core/constant.dart';
+import 'package:shopit/features/auth/login.dart';
+import 'package:shopit/features/auth/signup.dart';
+import 'package:shopit/core/widgets/buttons.dart';
 
 class Onboard extends StatefulWidget {
   const Onboard({super.key});

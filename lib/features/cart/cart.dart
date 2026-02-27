@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shopit/screens/homescreen.dart';
+import 'package:shopit/features/home/homescreen.dart';
 
 class Cart {
   static List<Map<String, dynamic>> items = [];

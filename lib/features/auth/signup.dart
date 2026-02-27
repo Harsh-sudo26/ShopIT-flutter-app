@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:shopit/consta/constant.dart';
+import 'package:shopit/core/constant.dart';
 import 'package:shopit/routes/routes.dart';
-import 'package:shopit/widgets/textfeild.dart';
+import 'package:shopit/core/widgets/textfeild.dart';
 
 class Signup extends StatefulWidget {
   const Signup({super.key});

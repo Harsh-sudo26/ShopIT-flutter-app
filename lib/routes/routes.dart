@@ -1,8 +1,8 @@
 import 'package:flutter/widgets.dart';
-import 'package:shopit/screens/homescreen.dart';
-import 'package:shopit/screens/login.dart';
-import 'package:shopit/screens/onboard.dart';
-import 'package:shopit/screens/signup.dart';
+import 'package:shopit/features/home/homescreen.dart';
+import 'package:shopit/features/auth/login.dart';
+import 'package:shopit/features/auth/onboard.dart';
+import 'package:shopit/features/auth/signup.dart';
 
 class Approutes {
   static const String homescreen = "/home";
