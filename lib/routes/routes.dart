@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:shopit/homescreen.dart';
+import 'package:shopit/screens/homescreen.dart';
 import 'package:shopit/screens/login.dart';
 import 'package:shopit/screens/onboard.dart';
 import 'package:shopit/screens/signup.dart';

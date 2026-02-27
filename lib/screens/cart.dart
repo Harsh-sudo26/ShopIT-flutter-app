@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shopit/homescreen.dart';
+import 'package:shopit/screens/homescreen.dart';
 
 class Cart {
   static List<Map<String, dynamic>> items = [];
@@ -16,7 +16,7 @@ class _CartPageState extends State<CartPage> {
   double get totalPrice {
     return Cart.items.fold(
       0,
-      (sum, item) => sum + (item['price'] as num).toDouble(),
+      (sum, item) => sum + (item['price'] as num).toDouble() * item['quantity'],
     );
   }
 
@@ -32,8 +32,10 @@ class _CartPageState extends State<CartPage> {
             children: [
               IconButton(
                 onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => const Homescreen()));
-                 
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const Homescreen()),
+                  );
                 },
                 icon: Icon(Icons.arrow_back_ios_new),
                 color: Colors.white,
@@ -41,6 +43,7 @@ class _CartPageState extends State<CartPage> {
               SizedBox(width: 10),
               Center(
                 child: Text(
+                  
                   "Cart",
                   style: TextStyle(
                     fontSize: 24,
@@ -54,7 +57,7 @@ class _CartPageState extends State<CartPage> {
         ),
       ),
       body: Cart.items.isEmpty
-          ? const Center(child: Text("Cart is empty"))
+          ? const Center(child: Text("Start your shopping!", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),))
           : ListView.builder(
               itemCount: Cart.items.length,
               itemBuilder: (context, index) {
@@ -63,6 +66,11 @@ class _CartPageState extends State<CartPage> {
                 return Card(
                   color: Colors.purple[100],
                   margin: const EdgeInsets.all(8),
+                  elevation: 5,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  shadowColor: const Color.fromARGB(255, 183, 78, 201),
                   child: ListTile(
                     leading: Image.asset(
                       item['image'],
@@ -72,13 +80,43 @@ class _CartPageState extends State<CartPage> {
                     ),
                     title: Text(item['name']),
                     subtitle: Text("\$${item['price']}"),
-                    trailing: IconButton(
-                      icon: const Icon(Icons.delete, color: Colors.red),
-                      onPressed: () {
-                        setState(() {
-                          Cart.items.removeAt(index);
-                        });
-                      },
+                    trailing: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        IconButton(
+                          onPressed: () {
+                            setState(() {
+                              if (item['quantity'] > 1) {
+                                item['quantity']--;
+                              }
+                            });
+                          },
+                          icon: const Icon(Icons.remove),
+                        ),
+                        Text(
+                          item['quantity'].toString(),
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        IconButton(
+                          onPressed: () {
+                            setState(() {
+                              item['quantity']++;
+                            });
+                          },
+                          icon: const Icon(Icons.add),
+                        ),
+                        IconButton(
+                          onPressed: () {
+                            setState(() {
+                              Cart.items.removeAt(index);
+                            });
+                          },
+                          icon: const Icon(Icons.delete, color: Colors.red),
+                        ),
+                      ],
                     ),
                   ),
                 );
@@ -93,14 +131,21 @@ class _CartPageState extends State<CartPage> {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Text(
-                    "Total: \$${totalPrice.toStringAsFixed(2)}",
-                    style: const TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
+                  Container(
+                    decoration: BoxDecoration(color: Colors.purpleAccent[200],borderRadius: BorderRadius.circular(12)),
+                    alignment: Alignment.center,
+                    height: MediaQuery.of(context).size.height * 0.05,
+                    width: double.infinity,
+                    
+                    child: Text(
+                      "Total: \$${totalPrice.toStringAsFixed(2)}",
+                      style: const TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
-                  const SizedBox(height: 10),
+                  const SizedBox(height: 20),
                   SizedBox(
                     width: double.infinity,
                     child: ElevatedButton(

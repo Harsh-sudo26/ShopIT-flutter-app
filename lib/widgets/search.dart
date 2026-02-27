@@ -32,13 +32,13 @@ class SearchWidget extends StatelessWidget {
           ElevatedButton(
             onPressed: onSearch,
             style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.lightBlueAccent,
+              backgroundColor: const Color.fromARGB(255, 34, 36, 185),
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 18),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(12),
               ),
             ),
-            child: const Text("Search", style: TextStyle()),
+            child: const Text("Search", style: TextStyle(color: Colors.white)),
           ),
           
         ],

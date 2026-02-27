@@ -134,7 +134,7 @@ class _OnboardState extends State<Onboard> {
                                 );
                               }
 
-                              navigateWithAnimation(const Login());
+                              navigateWithAnimation(Login());
                             },
                           ),
                           const SizedBox(height: 20),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class BottomNavBar extends StatelessWidget {
   final int selectedIndex;
@@ -18,17 +19,17 @@ class BottomNavBar extends StatelessWidget {
       destinations: const [
         NavigationDestination(
           icon: Icon(Icons.home_outlined,color: Colors.purple,),
-          selectedIcon: Icon(Icons.home),
+          selectedIcon: FaIcon(FontAwesomeIcons.house, color: Colors.purple,),
           label: 'Home',
         ),
         NavigationDestination(
           icon: Icon(Icons.shopping_cart,color: Colors.purple,),
-          selectedIcon: Icon(Icons.shopping_cart),
+          selectedIcon: FaIcon(FontAwesomeIcons.shoppingCart, color: Colors.purple,),
           label: 'Cart',
         ),
         NavigationDestination(
           icon: Icon(Icons.person_outline,color: Colors.purple,),
-          selectedIcon: Icon(Icons.person),
+          selectedIcon: FaIcon(FontAwesomeIcons.user, color: Colors.purple,),
           label: 'Profile',
         ),
       ],

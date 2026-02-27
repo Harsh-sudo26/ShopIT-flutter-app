@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:shopit/consta/constant.dart';
 import 'package:shopit/routes/routes.dart';
-import 'package:shopit/widgets/textfeild.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Login extends StatefulWidget {
-  const Login({super.key});
-
+  Login({super.key});
+  
+ 
   @override
   State<Login> createState() => _LoginState();
+   bool _obscureText = true;
+   final _formKey = GlobalKey<FormState>();
 }
 
 class _LoginState extends State<Login> {
@@ -17,7 +19,9 @@ class _LoginState extends State<Login> {
     return Scaffold(
       body: Stack(
         children: [
-          Positioned.fill(child: Image.asset(bg, fit: BoxFit.cover)),
+          Positioned.fill(
+            child: Container(color: Color.fromARGB(149, 255, 235, 59)),
+          ),
 
           SafeArea(
             child: Padding(
@@ -28,7 +32,7 @@ class _LoginState extends State<Login> {
                   Container(
                     height: 100,
                     decoration: BoxDecoration(
-                      color: Colors.white,
+                      color: Color.fromARGB(255, 255, 255, 255),
                       borderRadius: BorderRadius.circular(20),
                     ),
                     child: Row(
@@ -48,7 +52,7 @@ class _LoginState extends State<Login> {
                   Container(
                     height: 500,
                     decoration: BoxDecoration(
-                      color: Colors.white,
+                      color: Color.fromARGB(255, 255, 255, 255),
                       borderRadius: BorderRadius.circular(20),
                     ),
                     child: Padding(
@@ -64,23 +68,79 @@ class _LoginState extends State<Login> {
                             ),
                           ),
                           const SizedBox(height: 20),
-                          const Textfeild(
-                            hint: 'Enter Your E-mail',
-                            icon: Icon(Icons.email),
-                            obsecuretext: false,
+                          Form(
+                            key: widget._formKey,
+                            child: Column(
+                              children: [
+                                TextFormField(
+                                  decoration: const InputDecoration(
+                                    border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.all(
+                                        Radius.circular(30),
+                                      ),
+                                    ),
+                                    hintText: "Enter Email",
+                                  ),
+                                  validator: (value) {
+                                    if (value == null || value.isEmpty) {
+                                      return 'Please enter email';
+                                    }
+                                    if (!value.contains('@')) {
+                                      return 'Enter valid email';
+                                    }
+                                    return null;
+                                  },
+                                ),
+
+                                const SizedBox(height: 25),
+
+                                TextFormField(
+                                  obscureText: widget._obscureText,
+                                  decoration: InputDecoration(
+                                    border: const OutlineInputBorder(
+                                      borderRadius: BorderRadius.all(
+                                        Radius.circular(30),
+                                      ),
+                                    ),
+                                    hintText: "Enter Password",
+                                    suffixIcon: IconButton(
+                                      onPressed: () {
+                                        setState(() {
+                                          widget._obscureText = !widget._obscureText;
+                                        });
+                                      },
+                                      icon: Icon(
+                                        widget._obscureText
+                                            ? Icons.visibility
+                                            : Icons.visibility_off,
+                                      ),
+                                    ),
+                                  ),
+                                  validator: (value) {
+                                    if (value == null || value.isEmpty) {
+                                      return 'Please enter password';
+                                    }
+                                    if (value.length < 6) {
+                                      return 'Password must be at least 6 characters';
+                                    }
+                                    return null;
+                                  },
+                                ),
+                              ],
+                            ),
                           ),
-                          const SizedBox(height: 30),
-                          const Textfeild(
-                            hint: 'Enter Your Password',
-                            icon: Icon(Icons.lock),
-                            obsecuretext: true,
-                          ),
+                          const SizedBox(height: 20),
+
                           SizedBox(height: 20),
                           InkWell(
-                            onTap: () => Navigator.pushNamed(
-                              context,
-                              Approutes.homescreen,
-                            ),
+                            onTap: () {
+                              if (widget._formKey.currentState!.validate()) {
+                                Navigator.pushNamed(
+                                  context,
+                                  Approutes.homescreen,
+                                );
+                              }
+                            },
                             child: Container(
                               decoration: BoxDecoration(
                                 gradient: LinearGradient(

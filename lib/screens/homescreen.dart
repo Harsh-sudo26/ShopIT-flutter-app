@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:shopit/screens/topnav.dart';
 // import 'package:shopit/screens/cart.dart';
 import 'package:shopit/widgets/navigationbar.dart' show BottomNavBar;
 import 'package:shopit/screens/profilepage.dart';
@@ -127,6 +129,13 @@ class HomePage extends StatelessWidget {
             },
           ),
         ),
+        Topnav(),
+        Row(children: [
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            
+          ),
+        ],),
         Expanded(
           child: GridView.builder(
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -192,10 +201,16 @@ class HomePage extends StatelessWidget {
                           ),
                           IconButton(
                             onPressed: () {
+                               ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(backgroundColor: Colors.purpleAccent,
+                            content: Text("Added to cart!", style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold)),
+                          ),
+                        ); 
                               Cart.items.add({
                                 'name': product['name'],
                                 'price': product['price'],
                                 'image': product['image'],
+                                'quantity': 1,
                               });
                             },
                             icon: Padding(
@@ -203,10 +218,7 @@ class HomePage extends StatelessWidget {
                                 right: 15,
                                 bottom: 5,
                               ),
-                              child: Icon(
-                                Icons.add_shopping_cart,
-                                color: Colors.white,
-                              ),
+                              child: FaIcon(FontAwesomeIcons.cartShopping, color: Colors.white, size: 18)
                             ),
                             padding: EdgeInsets.zero,
                             constraints: const BoxConstraints(),
