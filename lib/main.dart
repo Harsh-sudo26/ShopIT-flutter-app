@@ -1,21 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:shopit/routes/routes.dart';
+import 'package:provider/provider.dart';
+import 'package:shopit/features/provider/cart_provider.dart';
+import 'package:shopit/features/home/homescreen.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => CartProvider(),
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
-  
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: Approutes.onboard,
-      routes: Approutes.routes,
+      home: Homescreen(),
     );
   }
 }

@@ -1,19 +1,24 @@
+// ignore_for_file: non_constant_identifier_names, must_be_immutable
+
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:shopit/core/constant.dart';
+import 'package:shopit/features/provider/auth_provider.dart';
 import 'package:shopit/routes/routes.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Login extends StatefulWidget {
   Login({super.key});
-  
- 
+
   @override
   State<Login> createState() => _LoginState();
-   bool _obscureText = true;
-   final _formKey = GlobalKey<FormState>();
+  bool _obscureText = true;
+  final _formKey = GlobalKey<FormState>();
 }
 
 class _LoginState extends State<Login> {
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -106,7 +111,8 @@ class _LoginState extends State<Login> {
                                     suffixIcon: IconButton(
                                       onPressed: () {
                                         setState(() {
-                                          widget._obscureText = !widget._obscureText;
+                                          widget._obscureText =
+                                              !widget._obscureText;
                                         });
                                       },
                                       icon: Icon(
@@ -133,12 +139,24 @@ class _LoginState extends State<Login> {
 
                           SizedBox(height: 20),
                           InkWell(
-                            onTap: () {
+                            onTap: () async {
                               if (widget._formKey.currentState!.validate()) {
-                                Navigator.pushNamed(
+                                
+                                
+                                final AuthProvider = Provider.of<Auth_Provider>(
                                   context,
-                                  Approutes.homescreen,
+                                  listen: false,
                                 );
+                                bool success = await AuthProvider.login(
+                                  emailController.text,
+                                  passwordController.text,
+                                );
+                                if (success) {
+                                  Navigator.pushNamed(
+                                    context,
+                                    Approutes.homescreen,
+                                  );
+                                }
                               }
                             },
                             child: Container(
