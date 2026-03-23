@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shopit/screens/homescreen.dart' show Homescreen;
+import 'package:shopit/screens/splash.dart';
+import 'package:shopit/theme/theme.dart';
 
 
 void main() {
@@ -13,9 +15,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Homescreen(),
+      theme:  AppTheme.lightTheme,
+      home: const Splash(),
     );
   }
 }
