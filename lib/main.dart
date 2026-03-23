@@ -1,14 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:shopit/features/provider/cart_provider.dart';
-import 'package:shopit/features/home/homescreen.dart';
+import 'package:shopit/screens/homescreen.dart' show Homescreen;
+
 
 void main() {
   runApp(
-    ChangeNotifierProvider(
-      create: (context) => CartProvider(),
-      child: const MyApp(),
-    ),
+    const MyApp(),
   );
 }
 
@@ -23,3 +19,4 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
