@@ -7,19 +7,17 @@ class Splash extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: SingleChildScrollView( 
+        child: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.all(16),
             child: Column(
-
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-              
                 ClipRRect(
                   borderRadius: BorderRadius.circular(24),
                   child: Image.asset(
                     "assets/images/splash.png",
-                    height: 530,
+                    height: 400,
                     width: double.infinity,
                     fit: BoxFit.cover,
                   ),
@@ -27,12 +25,11 @@ class Splash extends StatelessWidget {
 
                 const SizedBox(height: 20),
 
-              
                 Text(
                   "ATELIER",
-                  style: Theme.of(context).textTheme.headlineLarge?.copyWith(
-                        letterSpacing: 6,
-                      ),
+                  style: Theme.of(
+                    context,
+                  ).textTheme.headlineLarge?.copyWith(letterSpacing: 6),
                 ),
 
                 const SizedBox(height: 6),
@@ -40,14 +37,13 @@ class Splash extends StatelessWidget {
                 Text(
                   "THE DIGITAL BOUTIQUE",
                   style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                        letterSpacing: 2,
-                        color: Colors.grey,
-                      ),
+                    letterSpacing: 2,
+                    color: Colors.grey,
+                  ),
                 ),
 
                 const SizedBox(height: 16),
 
-               
                 Text(
                   "Curation",
                   style: Theme.of(context).textTheme.headlineLarge,
@@ -55,8 +51,8 @@ class Splash extends StatelessWidget {
                 Text(
                   "as an Art",
                   style: Theme.of(context).textTheme.headlineLarge?.copyWith(
-                        color: const Color(0xFF1D4ED8),
-                      ),
+                    color: const Color(0xFF1D4ED8),
+                  ),
                 ),
 
                 const SizedBox(height: 16),
@@ -66,13 +62,13 @@ class Splash extends StatelessWidget {
                   "Discover hand-selected pieces from independent designers "
                   "around the globe. Space, luxury, and style redefined "
                   "for the digital era.",
-                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                        height: 1.6,
-                      ),
+                  style: Theme.of(
+                    context,
+                  ).textTheme.bodyMedium?.copyWith(height: 1.6),
                 ),
 
                 const SizedBox(height: 30),
-  // ✅ Button
+
                 Container(
                   width: double.infinity,
                   height: 60,
@@ -101,10 +97,7 @@ class Splash extends StatelessWidget {
                     child: const Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text(
-                          "Get Started",
-                          style: TextStyle(fontSize: 18),
-                        ),
+                        Text("Get Started", style: TextStyle(fontSize: 18)),
                         SizedBox(width: 10),
                         Icon(Icons.arrow_forward),
                       ],

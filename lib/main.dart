@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:shopit/screens/homescreen.dart' show Homescreen;
 import 'package:shopit/screens/splash.dart';
 import 'package:shopit/theme/theme.dart';
 
