@@ -1,7 +1,22 @@
 import 'package:flutter/material.dart';
 
-class Splash extends StatelessWidget {
+class Splash extends StatefulWidget {
   const Splash({super.key});
+
+  @override
+  State<Splash> createState() => _SplashState();
+}
+
+class _SplashState extends State<Splash> {
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    // 🖼️ PRECACHE IMAGE - Only 3 lines added!
+    precacheImage(
+      AssetImage("assets/images/splash.png"),
+      context,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
