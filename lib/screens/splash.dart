@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shopit/screens/Auth/login.dart';
 
 class Splash extends StatefulWidget {
   const Splash({super.key});
@@ -12,10 +13,7 @@ class _SplashState extends State<Splash> {
   void didChangeDependencies() {
     super.didChangeDependencies();
     // 🖼️ PRECACHE IMAGE - Only 3 lines added!
-    precacheImage(
-      AssetImage("assets/images/splash.png"),
-      context,
-    );
+    precacheImage(AssetImage("assets/images/splash.png"), context);
   }
 
   @override
@@ -101,7 +99,12 @@ class _SplashState extends State<Splash> {
                     ],
                   ),
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => Login()),
+                      );
+                    },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.transparent,
                       shadowColor: Colors.transparent,
