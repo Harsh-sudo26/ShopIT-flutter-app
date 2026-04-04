@@ -11,7 +11,8 @@ class Textfeildwidget extends StatelessWidget {
     required this.hinttext,
     required this.label,
     required this.textcolor,
-    required this.icon, required String rowtexxt,
+    required this.icon,
+    required String rowtexxt,
   });
 
   @override
@@ -23,19 +24,20 @@ class Textfeildwidget extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(label, style: TextStyle(fontWeight: FontWeight.bold)),
-            Text(
-              "Optional",
-              style: TextStyle(fontSize: 12, color: Colors.grey),
-            ),
           ],
         ),
         const SizedBox(height: 5),
         TextField(
           style: TextStyle(color: textcolor),
           decoration: InputDecoration(
+            filled: true,
+            fillColor: const Color.fromARGB(255, 255, 255, 255),
             prefixIcon: icon,
             hintText: hinttext,
-            border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(8),
+              borderSide: BorderSide.none, // cleaner look
+            ),
           ),
         ),
       ],
