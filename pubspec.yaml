@@ -37,6 +37,7 @@ dependencies:
   google_fonts: ^8.0.1
   http: ^1.6.0
   webview_flutter: ^4.0.0
+  flutter_native_splash: ^2.4.7
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -89,3 +90,8 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package
+flutter_native_splash:
+  color: "#ffffff"   # background color
+  image: assets/images/splashlogo.png  # your logo
+  android: true
+  ios: true
