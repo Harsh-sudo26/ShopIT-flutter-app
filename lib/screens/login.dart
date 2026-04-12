@@ -74,6 +74,24 @@ class Login extends StatelessWidget {
               rowtext: 'Password',
               controller: emailController,
             ),
+            SizedBox(height: 30),
+            Container(
+              decoration: BoxDecoration(
+                color: const Color.fromARGB(255, 31, 16, 168),
+                borderRadius: BorderRadius.circular(20),
+              ),
+              height: 50,
+              width: 200,
+              child: Center(
+                child: Text(
+                  "Login",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            ),
           ],
         ),
       ),
