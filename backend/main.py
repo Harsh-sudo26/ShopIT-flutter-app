@@ -1,10 +1,15 @@
-from fastapi import FastAPI
+
+
+from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from typing import List
 
 app = FastAPI()
 
-# Product Model
+@app.get("/")
+def home():
+    return {"message": "API is running 🚀"}
+
 class Product(BaseModel):
     id: int
     name: str
@@ -12,7 +17,6 @@ class Product(BaseModel):
     description: str
     image: str
 
-# Fake Database
 products = [
     {
         "id": 1,
@@ -59,21 +63,14 @@ products = [
 
 ]
 
-# Get all products
+
 @app.get("/products", response_model=List[Product])
 def get_products():
     return products
 
-#  Get single product
 @app.get("/products/{product_id}")
 def get_product(product_id: int):
     for product in products:
         if product["id"] == product_id:
             return product
-    return {"error": "Product not found"}
-
-#  Add product
-@app.post("/products")
-def add_product(product: Product):
-    products.append(product.dict())
-    return {"message": "Product added successfully"}
+    raise HTTPException(status_code=404, detail="Product not found")

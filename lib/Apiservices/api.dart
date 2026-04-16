@@ -4,7 +4,7 @@ import 'package:shopit/model/products.dart';
 
 Future<List<Product>> fetchProducts() async {
   final response = await http.get(
-    Uri.parse('http://192.168.1.11:8000/products'),
+    Uri.parse('https://shopit-flutter-app.onrender.com'),
   );
 
   if (response.statusCode == 200) {
