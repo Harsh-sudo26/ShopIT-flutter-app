@@ -20,9 +20,4 @@ class MyApp extends StatelessWidget {
       home:  SplashScreen(),
     );
   }
-<<<<<<< HEAD
-}
-
-=======
 } 
->>>>>>> 23void d634d (new change)

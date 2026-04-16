@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shopit/screens/home.dart';
 import 'package:shopit/widget/textfieldwidget.dart';
 import 'package:shopit/widget/togle.dart';
 
@@ -74,22 +75,6 @@ class Login extends StatelessWidget {
               rowtext: 'Password',
               controller: emailController,
             ),
-<<<<<<< HEAD
-            SizedBox(height: 30),
-            Container(
-              decoration: BoxDecoration(
-                color: const Color.fromARGB(255, 31, 16, 168),
-                borderRadius: BorderRadius.circular(20),
-              ),
-              height: 50,
-              width: 200,
-              child: Center(
-                child: Text(
-                  "Login",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-=======
             SizedBox(height: 20),
             InkWell(
               onTapDown: (details) {
@@ -112,7 +97,6 @@ class Login extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                       color: Colors.white,
                     ),
->>>>>>> 23d634d (new change)
                   ),
                 ),
               ),
