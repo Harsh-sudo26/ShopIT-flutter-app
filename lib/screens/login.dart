@@ -74,6 +74,7 @@ class Login extends StatelessWidget {
               rowtext: 'Password',
               controller: emailController,
             ),
+<<<<<<< HEAD
             SizedBox(height: 30),
             Container(
               decoration: BoxDecoration(
@@ -88,6 +89,30 @@ class Login extends StatelessWidget {
                   style: TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
+=======
+            SizedBox(height: 20),
+            InkWell(
+              onTapDown: (details) {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => homescreen()),
+                );
+              },
+              child: Container(
+                decoration: BoxDecoration(
+                  color: const Color.fromARGB(255, 7, 53, 202),
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                height: 50,
+                width: 150,
+                child: Center(
+                  child: Text(
+                    "Login here",
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+>>>>>>> 23d634d (new change)
                   ),
                 ),
               ),
