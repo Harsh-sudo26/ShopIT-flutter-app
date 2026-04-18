@@ -13,25 +13,13 @@ class Product {
     required this.image,
   });
 
-  // Convert JSON → Product
   factory Product.fromJson(Map<String, dynamic> json) {
     return Product(
       id: json['id'],
       name: json['name'],
-      price: json['price'].toDouble(),
+      price: (json['price'] as num).toDouble(),
       description: json['description'],
       image: json['image'],
     );
-  }
-
-  // Convert Product → JSON (optional)
-  Map<String, dynamic> toJson() {
-    return {
-      "id": id,
-      "name": name,
-      "price": price,
-      "description": description,
-      "image": image,
-    };
   }
 }

@@ -1,5 +1,3 @@
-
-
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from typing import List
@@ -16,6 +14,7 @@ class Product(BaseModel):
     price: float
     description: str
     image: str
+
 
 products = [
     {
@@ -35,21 +34,21 @@ products = [
     {
         "id": 2,
         "name": "watch",
-        "price": 1993539,
+        "price": 1939,
         "description": "Track your fitness, heart rate, and notifications with a sleek modern design.",
         "image": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/watch-card-40-se-202603_FMT_WHH?wid=508&hei=472&fmt=p-jpg&qlt=95&.v=dFQyNjEycitpbFBFNXA5RHpaQjc1a2YwVXZvYWdoa2NXQndKNFdmSlMzdWZaQno4VzdyOTRhQU93VEhhWjgvSHg4ZHpEbm5XWGdaM3BiNVRDaG55Uk9OM1JTVGtKUFFWc0NQZFFxTkdlYUJBU25Ob2N5dVQyQmxkN0IyWWVHdW0"
     },
     {
         "id": 2,
         "name": "earbud",
-        "price": 199900,
+        "price": 19900,
         "description": "High-quality sound with noise cancellation and long battery backup.",
         "image": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/airpods-pro-compare-202509_FMT_WHH?wid=286&hei=324&fmt=png-alpha&.v=ZnlNck16RHdFMkxPbVgyckcxQ295TE02ak1jaHY5MHM0UFBuZUZVbFFyc3pjWXI4WEQ3UWRkKzlNcE1ISk5kVkpsaXN3MHNidUNvd1JEcVdBVnlCQ3JoLzFaYm9hR1F3Sk1JcjJiYVozdnk1dDgvV3BhU1hoSzFPUEZjam5HQ2g"
     },
     {
         "id": 2,
         "name": "cover",
-        "price": 19235399,
+        "price": 19299,
         "description":"Durable silicone case offering full protection with stylish design.",
         "image": "https://tiimg.tistatic.com/fp/1/007/827/comfortable-light-in-weight-durable-soft-silicone-plain-simple-mobile-cover--078.jpg"
     },
@@ -74,3 +73,8 @@ def get_product(product_id: int):
         if product["id"] == product_id:
             return product
     raise HTTPException(status_code=404, detail="Product not found")
+
+@app.post("/products")
+def add_product(product: Product):
+    products.append(product.dict())
+    return {"message": "Product added successfully"}
