@@ -9,7 +9,7 @@ class buttonwig extends StatelessWidget {
     super.key,
     required this.butotncolor,
     required this.buttonicon,
-    required this.buttontext,
+    required this.buttontext, 
   });
 
   @override
@@ -31,11 +31,12 @@ class buttonwig extends StatelessWidget {
 class buttonsim extends StatelessWidget {
   final Color simplebtncolor;
   final Text simplebuttontext;
-
+  final VoidCallback onPressed;
   const buttonsim({
     super.key,
     required this.simplebtncolor,
     required this.simplebuttontext,
+    required this.onPressed,
   });
 
   @override

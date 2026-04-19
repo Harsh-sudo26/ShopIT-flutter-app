@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shopit/features/products/Controler/product_controler.dart';
+import 'package:shopit/features/products/model/cartviewmodel.dart';
 
 import 'package:shopit/screens/splash.dart';
 
@@ -18,15 +19,14 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (_) => ProductController()..loadProducts(),
         ),
+        ChangeNotifierProvider(create: (_) => CartViewModel()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'ShopIT',
 
         theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(
-            seedColor: Colors.blue, 
-          ),
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
           useMaterial3: true,
         ),
 

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shopit/features/products/view/cart.dart';
 import 'package:shopit/widget/%20button.dart';
 import 'package:shopit/features/products/view/productcard.dart';
 import 'package:shopit/widget/textfieldwidget.dart';
@@ -16,7 +17,7 @@ class _homepageState extends State<homepage> {
 
   final List<Widget> _pages = const [
     HomeContent(),
-    CartPage(),
+    CartScreen(),
     ProfilePage(),
     FavPage(),
   ];
@@ -153,25 +154,25 @@ class _HomeContentState extends State<HomeContent>
                       ),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        children: const [
-                          Text(
+                        children: [
+                          const Text(
                             "The Art of living",
                             style: TextStyle(
                               fontSize: 26,
                               color: Colors.white,
                             ),
                           ),
-                          SizedBox(height: 10),
+                          const SizedBox(height: 10),
                           buttonsim(
                             simplebtncolor: Colors.blue,
-                            simplebuttontext: Text(
+                            simplebuttontext: const Text(
                               "Explore Now",
                               style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.bold,
                                 color: Colors.white,
                               ),
-                            ),
+                            ), onPressed: () {  },
                           ),
                         ],
                       ),
@@ -191,16 +192,7 @@ class _HomeContentState extends State<HomeContent>
   }
 }
 
-class CartPage extends StatelessWidget {
-  const CartPage({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    return const Center(
-      child: Text("Cart Page", style: TextStyle(fontSize: 20)),
-    );
-  }
-}
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});

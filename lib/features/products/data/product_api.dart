@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import '../model/products.dart';
+import '../model/productsmodel.dart';
 
 class ProductApi {
   Future<List<Product>> fetchProducts() async {

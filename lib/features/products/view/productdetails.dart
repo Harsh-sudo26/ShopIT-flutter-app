@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:shopit/features/products/model/products.dart';
+import 'package:provider/provider.dart';
+import 'package:shopit/features/products/model/cartviewmodel.dart';
+import 'package:shopit/features/products/model/productsmodel.dart';
 import 'package:shopit/widget/%20button.dart';
 // import 'package:shopit/widget/button.dart';
 
@@ -30,9 +32,7 @@ class _ProductDetailState extends State<ProductDetail> {
     final product = widget.product;
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text(product.name),
-      ),
+      appBar: AppBar(title: Text(product.name)),
 
       body: SafeArea(
         child: SingleChildScrollView(
@@ -49,7 +49,6 @@ class _ProductDetailState extends State<ProductDetail> {
                     width: double.infinity,
                     fit: BoxFit.contain,
 
-                    // 🔥 smooth loading (prevents jank)
                     loadingBuilder: (context, child, progress) {
                       if (progress == null) return child;
                       return const Center(
@@ -177,6 +176,12 @@ class _ProductDetailState extends State<ProductDetail> {
                     // 🔹 BUTTON (less rebuild cost)
                     GestureDetector(
                       onTap: () {
+                        final cartVm = Provider.of<CartViewModel>(
+                          context,
+                          listen: false,
+                        );
+                        cartVm.addWithQuantity(product, quantity);
+
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
                             content: Text(

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shopit/features/products/Controler/product_controler.dart';
+import 'package:shopit/features/products/model/cartviewmodel.dart';
+import 'package:shopit/features/products/model/productviewmoderl.dart';
 import 'package:shopit/features/products/view/productdetails.dart';
 import 'package:shopit/widget/%20button.dart';
 // import 'package:shopit/widget/button.dart' show buttonsim;
@@ -10,6 +12,7 @@ class Productcard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    int quantity = 1;
     return Consumer<ProductController>(
       builder: (context, controller, child) {
         // 🔹 Loading
@@ -84,13 +87,13 @@ class Productcard extends StatelessWidget {
                             loadingBuilder: (context, child, progress) {
                               if (progress == null) return child;
                               return const Center(
-                                child: CircularProgressIndicator(strokeWidth: 2),
+                                child: CircularProgressIndicator(
+                                  strokeWidth: 2,
+                                ),
                               );
                             },
                             errorBuilder: (context, error, stackTrace) =>
-                                const Center(
-                              child: Icon(Icons.broken_image),
-                            ),
+                                const Center(child: Icon(Icons.broken_image)),
                           ),
                         ),
                       ),
@@ -139,9 +142,29 @@ class Productcard extends StatelessWidget {
                                   ),
                                 ),
 
-                                const buttonsim(
-                                  simplebtncolor: Colors.blue,
-                                  simplebuttontext: Text("Buy"),
+                                InkWell(
+                                  onTap: () {
+                                    context
+                                        .read<CartViewModel>()
+                                        .addWithQuantity(
+                                          product,
+                                          quantity,
+                                        ); // ✅ logic moved to VM
+
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                        content: Text(
+                                          "${product.name} x$quantity added to cart",
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                  child: buttonsim(
+                                    simplebtncolor: Colors.blue,
+                                    simplebuttontext: const Text("Add To Cart"),
+                                    onPressed:
+                                        () {}
+                                  ),
                                 ),
                               ],
                             ),
