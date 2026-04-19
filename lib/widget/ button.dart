@@ -22,11 +22,42 @@ class buttonwig extends StatelessWidget {
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          buttonicon,
-          const SizedBox(width: 8),
-          buttontext,
+        children: [buttonicon, const SizedBox(width: 8), buttontext],
+      ),
+    );
+  }
+}
+
+class buttonsim extends StatelessWidget {
+  final Color simplebtncolor;
+  final Text simplebuttontext;
+
+  const buttonsim({
+    super.key,
+    required this.simplebtncolor,
+    required this.simplebuttontext,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 50,
+      width: 120,
+      decoration: BoxDecoration(
+        color: simplebtncolor,
+        borderRadius: BorderRadius.circular(10),
+
+        boxShadow: const [
+          BoxShadow(
+            color: Color.fromARGB(94, 5, 83, 252),
+            blurRadius: 8,
+            offset: Offset(0, 4), // shadow position
+          ),
         ],
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [simplebuttontext],
       ),
     );
   }

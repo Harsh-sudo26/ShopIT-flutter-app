@@ -3,7 +3,7 @@ import 'package:http/http.dart' as http;
 import 'package:shopit/model/products.dart';
 
 class ApiService {
-  final String baseUrl = "https://shopit-flutter-app-1.onrender.com";
+  final String baseUrl = "https://shopit-flutter-app.onrender.com";
 
   Future<List<Product>> fetchProducts() async {
     final response = await http.get(Uri.parse('$baseUrl/products'));

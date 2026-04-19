@@ -35,7 +35,7 @@ products = [
         "name": "Watch",
         "price": 1939,
         "description": "This modern smartwatch is designed to keep you connected and healthy. It tracks your daily activities including steps, calories burned, and heart rate in real time. With smart notifications, you can receive calls, messages, and app alerts directly on your wrist. The sleek and stylish design makes it suitable for both casual and formal wear, while the long-lasting battery ensures uninterrupted performance throughout the day.",
-        "image": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/watch-card-40-se-202603_FMT_WHH?wid=508&hei=472&fmt=p-jpg&qlt=95"
+        "image": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/watch-card-40-se-202603_FMT_WHH?wid=508&hei=472&fmt=p-jpg&qlt=95&.v=dFQyNjEycitpbFBFNXA5RHpaQjc1a2YwVXZvYWdoa2NXQndKNFdmSlMzdWZaQno4VzdyOTRhQU93VEhhWjgvSHg4ZHpEbm5XWGdaM3BiNVRDaG55Uk9OM1JTVGtKUFFWc0NQZFFxTkdlYUJBU25Ob2N5dVQyQmxkN0IyWWVHdW0"
     },
     {
         "id": 4,
