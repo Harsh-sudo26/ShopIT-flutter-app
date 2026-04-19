@@ -21,8 +21,8 @@ class _ProductDetailState extends State<ProductDetail> {
     return Scaffold(
       appBar: AppBar(title: Text(product.name)),
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          // 🔹 Product Image
           Image.network(
             product.image,
             height: 250,
@@ -35,7 +35,6 @@ class _ProductDetailState extends State<ProductDetail> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // 🔹 Name
                 Text(
                   product.name,
                   style: const TextStyle(
@@ -46,7 +45,6 @@ class _ProductDetailState extends State<ProductDetail> {
 
                 const SizedBox(height: 10),
 
-                // 🔹 Price
                 Text(
                   "₹${product.price.toStringAsFixed(0)}",
                   style: const TextStyle(
@@ -57,43 +55,87 @@ class _ProductDetailState extends State<ProductDetail> {
                 ),
 
                 const SizedBox(height: 10),
+                Container(
+                  decoration: BoxDecoration(
+                    color: const Color.fromARGB(255, 231, 232, 233),
+                    borderRadius: BorderRadius.circular(20),
+                  ),
 
-                // 🔹 Description
-                Text(product.description),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Product Description",
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        SizedBox(height: 10),
+                        Text(product.description),
+                      ],
+                    ),
+                  ),
+                ),
 
                 const SizedBox(height: 20),
 
-                // 🔹 Quantity Selector
                 Row(
                   children: [
-                    const Text("Quantity: "),
-                    IconButton(
-                      onPressed: () {
-                        if (quantity > 1) {
-                          setState(() => quantity--);
-                        }
-                      },
-                      icon: const Icon(Icons.remove),
-                    ),
-                    Text(quantity.toString()),
-                    IconButton(
-                      onPressed: () {
-                        setState(() => quantity++);
-                      },
-                      icon: const Icon(Icons.add),
+                    Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(30),
+                        color: const Color.fromARGB(255, 5, 135, 241),
+                      ),
+                      width: 200,
+                      height: 50,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Text(
+                            "Quanity ",
+                            style: TextStyle(
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                            ),
+                          ),
+                          Text(
+                            quantity.toString(),
+                            style: TextStyle(fontSize: 18),
+                          ),
+                          IconButton(
+                            onPressed: () {
+                              setState(() {
+                                quantity++;
+                              });
+                            },
+                            icon: Icon(Icons.add, color: Colors.white),
+                          ),
+                          IconButton(
+                            onPressed: () {
+                              setState(() {
+                                quantity--;
+                              });
+                            },
+                            icon: Icon(Icons.remove, color: Colors.white),
+                          ),
+                        ],
+                      ),
                     ),
                   ],
                 ),
 
                 const SizedBox(height: 20),
 
-                // 🔹 Buy Button
-                SizedBox(
-                  width: double.infinity,
-                  child: buttonwig(
-                    butotncolor: Colors.blue,
-                    buttonicon: Icon(Icons.shopping_cart),
-                    buttontext: Text('Add to cart'),
+                buttonwig(
+                  butotncolor: Colors.blue,
+                  buttonicon: Icon(Icons.shopping_cart, color: Colors.white),
+                  buttontext: Text(
+                    "Add to cart",
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
                 ),
               ],

@@ -4,6 +4,7 @@ class buttonwig extends StatelessWidget {
   final Color butotncolor;
   final Icon buttonicon;
   final Text buttontext;
+
   const buttonwig({
     super.key,
     required this.butotncolor,
@@ -14,9 +15,19 @@ class buttonwig extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: butotncolor,
       height: 50,
-      child: 
+      decoration: BoxDecoration(
+        color: butotncolor,
+        borderRadius: BorderRadius.circular(10),
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          buttonicon,
+          const SizedBox(width: 8),
+          buttontext,
+        ],
+      ),
     );
   }
 }
