@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shopit/features/products/Controler/product_controler.dart';
 import 'package:shopit/features/products/model/cartviewmodel.dart';
-import 'package:shopit/features/products/model/productviewmoderl.dart';
 import 'package:shopit/features/products/view/productdetails.dart';
 import 'package:shopit/widget/%20button.dart';
 // import 'package:shopit/widget/button.dart' show buttonsim;
