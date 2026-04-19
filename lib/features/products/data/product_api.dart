@@ -5,7 +5,7 @@ import '../model/products.dart';
 class ProductApi {
   Future<List<Product>> fetchProducts() async {
     final response = await http.get(
-      Uri.parse("https://shopit-flutter-app.onrender.com"),
+      Uri.parse("https://shopit-flutter-app.onrender.com/products"),
     );
 
     print("RESPONSE: ${response.body}"); 
