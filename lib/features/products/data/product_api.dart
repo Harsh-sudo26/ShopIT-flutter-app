@@ -11,7 +11,7 @@ class ProductApi {
     if (response.statusCode == 200) {
       final decoded = jsonDecode(response.body);
 
-      // 🔥 HANDLE BOTH MAP & LIST
+      
       if (decoded is List) {
         return decoded.map((e) => Product.fromJson(e)).toList();
       } else if (decoded is Map && decoded['products'] is List) {
