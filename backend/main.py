@@ -42,7 +42,7 @@ products = [
         "name": "Earbuds",
         "price": 19900,
         "description": "Experience premium sound quality with these wireless earbuds featuring advanced noise cancellation technology. Designed for comfort and long listening sessions, they fit securely in your ears while delivering deep bass and crystal-clear audio. The earbuds come with a long-lasting battery and a compact charging case, making them perfect for travel, workouts, and daily use. Seamless connectivity ensures a smooth listening experience across devices.",
-        "image": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/airpods-pro-compare-202509_FMT_WHH?wid=286&hei=324&fmt=png-alpha"
+        "image": "https://www.flashify.in/cdn/shop/products/61sRKTAfrhL.jpg?crop=center&height=1200&v=1733946410&width=1200"
     },
     {
         "id": 5,

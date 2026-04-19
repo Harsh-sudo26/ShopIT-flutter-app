@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shopit/widget/%20button.dart';
 
-import 'package:shopit/widget/productcard.dart';
+import 'package:shopit/features/products/view/productcard.dart';
 import 'package:shopit/widget/textfieldwidget.dart';
 
 // ignore: camel_case_types
