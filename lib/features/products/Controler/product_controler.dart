@@ -8,7 +8,7 @@ class ProductController extends ChangeNotifier {
 
   List<Product> products = [];
   bool isLoading = false;
-  String? error; // 🔥 ADD THIS
+  String? error; 
 
   Future<void> loadProducts() async {
     isLoading = true;
@@ -18,7 +18,7 @@ class ProductController extends ChangeNotifier {
     try {
       products = await repository.getProducts();
     } catch (e) {
-      error = e.toString(); // 🔥 store error
+      error = e.toString(); 
     }
 
     isLoading = false;

@@ -8,7 +8,6 @@ class ProductApi {
       Uri.parse("https://shopit-flutter-app.onrender.com/products"),
     );
 
-    print("RESPONSE: ${response.body}"); 
 
     if (response.statusCode == 200) {
       final List data = jsonDecode(response.body); 

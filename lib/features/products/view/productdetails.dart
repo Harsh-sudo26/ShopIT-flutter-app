@@ -15,109 +15,144 @@ class ProductDetail extends StatefulWidget {
 class _ProductDetailState extends State<ProductDetail> {
   int quantity = 1;
 
+  void _increase() {
+    setState(() => quantity++);
+  }
+
+  void _decrease() {
+    if (quantity > 1) {
+      setState(() => quantity--);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final product = widget.product;
 
     return Scaffold(
-      appBar: AppBar(title: Text(product.name)),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            // 🔹 Image
-            Image.network(
-              product.image,
-              height: 250,
-              width: double.infinity,
-              fit: BoxFit.contain,
-            ),
+      appBar: AppBar(
+        title: Text(product.name),
+      ),
 
-            Padding(
-              padding: const EdgeInsets.all(16),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  // 🔹 Name
-                  Text(
-                    product.name,
-                    style: const TextStyle(
-                      fontSize: 22,
-                      fontWeight: FontWeight.bold,
-                    ),
+      body: SafeArea(
+        child: SingleChildScrollView(
+          physics: const BouncingScrollPhysics(),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // 🔹 IMAGE (optimized)
+              RepaintBoundary(
+                child: AspectRatio(
+                  aspectRatio: 1.2,
+                  child: Image.network(
+                    product.image,
+                    width: double.infinity,
+                    fit: BoxFit.contain,
+
+                    // 🔥 smooth loading (prevents jank)
+                    loadingBuilder: (context, child, progress) {
+                      if (progress == null) return child;
+                      return const Center(
+                        child: CircularProgressIndicator(strokeWidth: 2),
+                      );
+                    },
+
+                    errorBuilder: (context, error, stackTrace) =>
+                        const Center(child: Icon(Icons.broken_image)),
                   ),
+                ),
+              ),
 
-                  const SizedBox(height: 10),
-
-                  // 🔹 Price
-                  Text(
-                    "₹${product.price.toStringAsFixed(0)}",
-                    style: const TextStyle(
-                      fontSize: 20,
-                      color: Colors.green,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-
-                  const SizedBox(height: 15),
-
-                  // 🔹 Quantity Selector
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const Text(
-                        "Quantity",
-                        style: TextStyle(fontSize: 16),
+              Padding(
+                padding: const EdgeInsets.all(16),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    // 🔹 NAME
+                    Text(
+                      product.name,
+                      style: const TextStyle(
+                        fontSize: 22,
+                        fontWeight: FontWeight.bold,
                       ),
+                    ),
 
-                      Row(
+                    const SizedBox(height: 10),
+
+                    // 🔹 PRICE
+                    Text(
+                      "₹${product.price.toStringAsFixed(0)}",
+                      style: const TextStyle(
+                        fontSize: 20,
+                        color: Colors.green,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+
+                    const SizedBox(height: 20),
+
+                    // 🔹 QUANTITY (optimized taps)
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 12,
+                        vertical: 6,
+                      ),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(12),
+                        color: Colors.grey.shade100,
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          IconButton(
-                            onPressed: () {
-                              if (quantity > 1) {
-                                setState(() => quantity--);
-                              }
-                            },
-                            icon: const Icon(Icons.remove),
+                          const Text(
+                            "Quantity",
+                            style: TextStyle(fontSize: 16),
                           ),
 
-                          Text(
-                            quantity.toString(),
-                            style: const TextStyle(fontSize: 16),
-                          ),
+                          Row(
+                            children: [
+                              IconButton(
+                                onPressed: _decrease,
+                                icon: const Icon(Icons.remove),
+                              ),
 
-                          IconButton(
-                            onPressed: () {
-                              setState(() => quantity++);
-                            },
-                            icon: const Icon(Icons.add),
+                              Text(
+                                quantity.toString(),
+                                style: const TextStyle(fontSize: 16),
+                              ),
+
+                              IconButton(
+                                onPressed: _increase,
+                                icon: const Icon(Icons.add),
+                              ),
+                            ],
                           ),
                         ],
                       ),
-                    ],
-                  ),
-
-                  const SizedBox(height: 15),
-
-                  // 🔹 Total Price
-                  Text(
-                    "Total: ₹${(product.price * quantity).toStringAsFixed(0)}",
-                    style: const TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.blue,
                     ),
-                  ),
 
-                  const SizedBox(height: 20),
+                    const SizedBox(height: 15),
 
-                  // 🔹 Description
-                  Container(
-                    decoration: BoxDecoration(
-                      color: const Color.fromARGB(255, 246, 246, 247),
-                      borderRadius: BorderRadius.circular(20),
+                    // 🔹 TOTAL
+                    Text(
+                      "Total: ₹${(product.price * quantity).toStringAsFixed(0)}",
+                      style: const TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.blue,
+                      ),
                     ),
-                    child: Padding(
+
+                    const SizedBox(height: 20),
+
+                    // 🔹 DESCRIPTION (card optimized)
+                    Container(
+                      width: double.infinity,
                       padding: const EdgeInsets.all(12),
+                      decoration: BoxDecoration(
+                        color: const Color.fromARGB(255, 246, 246, 247),
+                        borderRadius: BorderRadius.circular(16),
+                      ),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -129,45 +164,47 @@ class _ProductDetailState extends State<ProductDetail> {
                             ),
                           ),
                           const SizedBox(height: 10),
-                          Text(product.description),
+                          Text(
+                            product.description,
+                            style: const TextStyle(height: 1.4),
+                          ),
                         ],
                       ),
                     ),
-                  ),
 
-                  const SizedBox(height: 25),
+                    const SizedBox(height: 25),
 
-                  // 🔹 Add to Cart Button
-                  GestureDetector(
-                    onTap: () {
-                      // 🔥 your logic here
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          content: Text(
-                            "${product.name} x$quantity added to cart",
+                    // 🔹 BUTTON (less rebuild cost)
+                    GestureDetector(
+                      onTap: () {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text(
+                              "${product.name} x$quantity added to cart",
+                            ),
                           ),
+                        );
+                      },
+                      child: const buttonwig(
+                        butotncolor: Colors.blue,
+                        buttonicon: Icon(
+                          Icons.shopping_cart,
+                          color: Colors.white,
                         ),
-                      );
-                    },
-                    child: buttonwig(
-                      butotncolor: Colors.blue,
-                      buttonicon: const Icon(
-                        Icons.shopping_cart,
-                        color: Colors.white,
-                      ),
-                      buttontext: const Text(
-                        "Add to Cart",
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
+                        buttontext: Text(
+                          "Add to Cart",
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

@@ -1,39 +1,54 @@
-import 'package:flutter/material.dart';
 import 'dart:async';
-
-import 'package:shopit/screens/login.dart';
+import 'package:flutter/material.dart';
+import 'package:shopit/screens/Auth/login.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
 
   @override
-  // ignore: library_private_types_in_public_api
-  _SplashScreenState createState() => _SplashScreenState();
+  State<SplashScreen> createState() => _SplashScreenState();
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  Timer? _timer;
+
   @override
   void initState() {
     super.initState();
-    Timer(Duration(seconds: 5), () {
-      if (mounted) {
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(builder: (context) => Login()),
-        );
-      }
+
+    _timer = Timer(const Duration(seconds: 2), () {
+      if (!mounted) return;
+
+      Navigator.pushReplacement(
+        context,
+        PageRouteBuilder(
+          transitionDuration: const Duration(milliseconds: 600),
+          pageBuilder: (_, __, ___) => const Login(),
+          transitionsBuilder: (_, animation, __, child) {
+            return FadeTransition(opacity: animation, child: child);
+          },
+        ),
+      );
     });
   }
 
   @override
+  void dispose() {
+    _timer?.cancel(); // 🔥 prevents memory leak
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       backgroundColor: Colors.white,
       body: Center(
-        child: Image.asset(
-          "assets/images/splashlogo.png",
-          width: 200,
-          height: 200,
+        child: RepaintBoundary(
+          child: Image(
+            image: AssetImage("assets/images/splashlogo.png"),
+            width: 180,
+            height: 180,
+          ),
         ),
       ),
     );
