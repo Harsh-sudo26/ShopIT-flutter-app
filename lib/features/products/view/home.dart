@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shopit/features/products/view/cart.dart';
 import 'package:shopit/features/products/view/fav.dart';
 import 'package:shopit/features/products/view/profile.dart';
+import 'package:shopit/features/products/view/search.dart';
 import 'package:shopit/widget/%20button.dart';
 import 'package:shopit/features/products/view/productcard.dart';
 import 'package:shopit/widget/textfieldwidget.dart';
@@ -16,16 +17,16 @@ class homepage extends StatefulWidget {
 
 class _homepageState extends State<homepage> {
   int _selectedIndex = 0;
-
   final List<Widget> _pages = [
     const HomeContent(),
     const CartScreen(),
-    const Profile(),
+    const Search(),
     const Favpage(),
+    const Profile(),
   ];
 
   void _onItemTapped(int index) {
-    if (_selectedIndex == index) return; // prevents unnecessary rebuilds
+    if (_selectedIndex == index) return;
     setState(() {
       _selectedIndex = index;
     });
@@ -49,8 +50,9 @@ class _homepageState extends State<homepage> {
             icon: Icon(Icons.shopping_cart),
             label: "Cart",
           ),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profile"),
+          BottomNavigationBarItem(icon: Icon(Icons.search), label: "search"),
           BottomNavigationBarItem(icon: Icon(Icons.favorite), label: "Fav"),
+          BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profile"),
         ],
       ),
     );
@@ -190,4 +192,3 @@ class _HomeContentState extends State<HomeContent>
     );
   }
 }
-
