@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:shopit/features/products/Controler/product_controler.dart';
 import 'package:shopit/features/products/model/cartviewmodel.dart';
+import 'package:shopit/features/products/model/productviewmoderl.dart';
 import 'package:shopit/features/products/view/productdetails.dart';
 import 'package:shopit/widget/%20button.dart';
 // import 'package:shopit/widget/button.dart' show buttonsim;
@@ -12,31 +12,28 @@ class Productcard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     int quantity = 1;
-    return Consumer<ProductController>(
-      builder: (context, controller, child) {
-        // 🔹 Loading
-        if (controller.isLoading) {
+    return Consumer<ProductViewModel>(
+      builder: (context, vm, child) {
+        if (vm.isLoading) {
           return const Center(child: CircularProgressIndicator());
         }
 
-        // 🔹 Error
-        if (controller.error != null) {
-          return Center(child: Text(controller.error!));
+        if (vm.error != null) {
+          return Center(child: Text(vm.error!));
         }
 
-        // 🔹 Empty
-        if (controller.products.isEmpty) {
+        if (vm.products.isEmpty) {
           return const Center(child: Text("No products found"));
         }
 
-        final products = controller.products;
+        final products = vm.products;
 
         return GridView.builder(
           key: const PageStorageKey("product_grid"),
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),
           itemCount: products.length,
-          cacheExtent: 1000, // 🔥 improves scroll smoothness
+          cacheExtent: 1000,
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 1,
             mainAxisSpacing: 16,
@@ -161,8 +158,7 @@ class Productcard extends StatelessWidget {
                                   child: buttonsim(
                                     simplebtncolor: Colors.blue,
                                     simplebuttontext: const Text("Add To Cart"),
-                                    onPressed:
-                                        () {}
+                                    onPressed: () {},
                                   ),
                                 ),
                               ],

@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:shopit/features/products/Controler/product_controler.dart';
 import 'package:shopit/features/products/model/cartviewmodel.dart';
-
+import 'package:shopit/features/products/model/productviewmoderl.dart';
 import 'package:shopit/screens/splash.dart';
 
 void main() {
@@ -17,7 +16,7 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(
-          create: (_) => ProductController()..loadProducts(),
+          create: (_) => ProductViewModel()..fetchProducts(), 
         ),
         ChangeNotifierProvider(create: (_) => CartViewModel()),
       ],
