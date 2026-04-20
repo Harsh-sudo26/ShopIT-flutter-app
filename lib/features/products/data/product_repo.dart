@@ -2,20 +2,16 @@ import 'package:shopit/features/products/model/productsmodel.dart';
 import 'product_api.dart';
 
 class ProductRepository {
-  final List<Product> _fakeDb = [];
   final ProductApi api = ProductApi();
 
-Future<List<Product>> getProducts() {
-  return api.fetchProducts();
-}
-
+  // 🔹 FETCH FROM REAL API
   Future<List<Product>> fetchProducts() async {
-    await Future.delayed(const Duration(seconds: 1)); // simulate API
-    return _fakeDb;
+    return await api.fetchProducts();
   }
 
+  // 🔹 ADD PRODUCT (optional - backend not connected yet)
   Future<void> addProduct(Product product) async {
-    await Future.delayed(const Duration(milliseconds: 300));
-    _fakeDb.add(product);
+    // If you have POST API, call here
+    // For now, just placeholder
   }
 }
