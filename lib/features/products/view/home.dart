@@ -20,7 +20,7 @@ class _homepageState extends State<homepage> {
     const HomeContent(),
     const CartScreen(),
     const ProfilePage(),
-    const  FavPage(),
+    const Favpage(),
   ];
 
   void _onItemTapped(int index) {
@@ -33,10 +33,7 @@ class _homepageState extends State<homepage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: IndexedStack(
-        index: _selectedIndex,
-        children: _pages,
-      ),
+      body: IndexedStack(index: _selectedIndex, children: _pages),
 
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
@@ -48,7 +45,9 @@ class _homepageState extends State<homepage> {
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
           BottomNavigationBarItem(
-              icon: Icon(Icons.shopping_cart), label: "Cart"),
+            icon: Icon(Icons.shopping_cart),
+            label: "Cart",
+          ),
           BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profile"),
           BottomNavigationBarItem(icon: Icon(Icons.favorite), label: "Fav"),
         ],
@@ -56,8 +55,6 @@ class _homepageState extends State<homepage> {
     );
   }
 }
-
-
 
 class HomeContent extends StatefulWidget {
   const HomeContent({super.key});
@@ -160,10 +157,7 @@ class _HomeContentState extends State<HomeContent>
                         children: [
                           const Text(
                             "The Art of living",
-                            style: TextStyle(
-                              fontSize: 26,
-                              color: Colors.white,
-                            ),
+                            style: TextStyle(fontSize: 26, color: Colors.white),
                           ),
                           const SizedBox(height: 10),
                           buttonsim(
@@ -175,7 +169,8 @@ class _HomeContentState extends State<HomeContent>
                                 fontWeight: FontWeight.bold,
                                 color: Colors.white,
                               ),
-                            ), onPressed: () {  },
+                            ),
+                            onPressed: () {},
                           ),
                         ],
                       ),
@@ -195,8 +190,6 @@ class _HomeContentState extends State<HomeContent>
   }
 }
 
-
-
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
 
@@ -204,17 +197,6 @@ class ProfilePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Center(
       child: Text("Profile Page", style: TextStyle(fontSize: 20)),
-    );
-  }
-}
-
-class FavPage extends StatelessWidget {
-  const FavPage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Center(
-      child: Text("Favorite Page", style: TextStyle(fontSize: 20)),
     );
   }
 }
