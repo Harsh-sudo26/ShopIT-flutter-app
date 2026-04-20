@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shopit/features/products/model/cartviewmodel.dart';
+import 'package:shopit/features/products/model/favoriteviewmodel.dart';
 import 'package:shopit/features/products/model/productviewmoderl.dart';
 import 'package:shopit/screens/splash.dart';
 
@@ -16,8 +17,9 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(
-          create: (_) => ProductViewModel()..fetchProducts(), 
+          create: (_) => ProductViewModel()..fetchProducts(),
         ),
+        ChangeNotifierProvider(create: (_) => FavoriteViewModel()),
         ChangeNotifierProvider(create: (_) => CartViewModel()),
       ],
       child: MaterialApp(

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:http/http.dart';
 import 'package:provider/provider.dart';
 import 'package:shopit/features/products/model/cartviewmodel.dart';
+import 'package:shopit/features/products/model/favoriteviewmodel.dart';
+import 'package:shopit/features/products/model/productsmodel.dart';
 import 'package:shopit/features/products/model/productviewmoderl.dart';
 import 'package:shopit/features/products/view/productdetails.dart';
 import 'package:shopit/widget/%20button.dart';
@@ -11,6 +14,7 @@ class Productcard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final favvm = context.watch<FavoriteViewModel>();
     int quantity = 1;
     return Consumer<ProductViewModel>(
       builder: (context, vm, child) {
@@ -42,7 +46,7 @@ class Productcard extends StatelessWidget {
 
           itemBuilder: (context, index) {
             final product = products[index];
-
+             final isFav = favvm.isFavorite(product);
             return RepaintBoundary(
               child: InkWell(
                 onTap: () {
@@ -137,16 +141,24 @@ class Productcard extends StatelessWidget {
                                     color: Colors.green,
                                   ),
                                 ),
-
+                                IconButton(
+                                  onPressed: () {
+                                    context
+                                        .read<FavoriteViewModel>()
+                                        .toggleFavorite(product);
+                                  },
+                                  icon: Icon(
+                                    isFav
+                                        ? Icons.favorite
+                                        : Icons.favorite_border,
+                                    color: isFav ? Colors.red : Colors.grey,
+                                  ),
+                                ),
                                 InkWell(
                                   onTap: () {
                                     context
                                         .read<CartViewModel>()
-                                        .addWithQuantity(
-                                          product,
-                                          quantity,
-                                        ); // ✅ logic moved to VM
-
+                                        .addWithQuantity(product, quantity);
                                     ScaffoldMessenger.of(context).showSnackBar(
                                       SnackBar(
                                         content: Text(

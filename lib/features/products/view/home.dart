@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shopit/features/products/view/cart.dart';
+import 'package:shopit/features/products/view/fav.dart';
 import 'package:shopit/widget/%20button.dart';
 import 'package:shopit/features/products/view/productcard.dart';
 import 'package:shopit/widget/textfieldwidget.dart';
@@ -15,11 +16,11 @@ class homepage extends StatefulWidget {
 class _homepageState extends State<homepage> {
   int _selectedIndex = 0;
 
-  final List<Widget> _pages = const [
-    HomeContent(),
-    CartScreen(),
-    ProfilePage(),
-    FavPage(),
+  final List<Widget> _pages = [
+    const HomeContent(),
+    const CartScreen(),
+    const ProfilePage(),
+    const  FavPage(),
   ];
 
   void _onItemTapped(int index) {
@@ -55,6 +56,8 @@ class _homepageState extends State<homepage> {
     );
   }
 }
+
+
 
 class HomeContent extends StatefulWidget {
   const HomeContent({super.key});
