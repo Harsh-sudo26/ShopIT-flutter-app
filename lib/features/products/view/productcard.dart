@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:http/http.dart';
 import 'package:provider/provider.dart';
 import 'package:shopit/features/products/model/cartviewmodel.dart';
 import 'package:shopit/features/products/model/favoriteviewmodel.dart';
-import 'package:shopit/features/products/model/productsmodel.dart';
 import 'package:shopit/features/products/model/productviewmoderl.dart';
 import 'package:shopit/features/products/view/productdetails.dart';
 import 'package:shopit/widget/%20button.dart';
-// import 'package:shopit/widget/button.dart' show buttonsim;
 
 class Productcard extends StatelessWidget {
   const Productcard({super.key});
@@ -16,6 +13,7 @@ class Productcard extends StatelessWidget {
   Widget build(BuildContext context) {
     final favvm = context.watch<FavoriteViewModel>();
     int quantity = 1;
+
     return Consumer<ProductViewModel>(
       builder: (context, vm, child) {
         if (vm.isLoading) {
@@ -37,16 +35,15 @@ class Productcard extends StatelessWidget {
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),
           itemCount: products.length,
-          cacheExtent: 1000,
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 1,
             mainAxisSpacing: 16,
             childAspectRatio: 0.78,
           ),
-
           itemBuilder: (context, index) {
             final product = products[index];
-             final isFav = favvm.isFavorite(product);
+            final isFav = favvm.isFavorite(product);
+
             return RepaintBoundary(
               child: InkWell(
                 onTap: () {
@@ -70,32 +67,57 @@ class Productcard extends StatelessWidget {
                       ),
                     ],
                   ),
-
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      // 🔹 IMAGE (optimized)
-                      ClipRRect(
-                        borderRadius: const BorderRadius.vertical(
-                          top: Radius.circular(16),
-                        ),
-                        child: AspectRatio(
-                          aspectRatio: 1.2,
-                          child: Image.network(
-                            product.image,
-                            fit: BoxFit.contain,
-                            loadingBuilder: (context, child, progress) {
-                              if (progress == null) return child;
-                              return const Center(
-                                child: CircularProgressIndicator(
-                                  strokeWidth: 2,
-                                ),
-                              );
-                            },
-                            errorBuilder: (context, error, stackTrace) =>
-                                const Center(child: Icon(Icons.broken_image)),
+                      Stack(
+                        children: [
+                          ClipRRect(
+                            borderRadius: const BorderRadius.vertical(
+                              top: Radius.circular(16),
+                            ),
+                            child: AspectRatio(
+                              aspectRatio: 1.2,
+                              child: Image.network(
+                                product.image,
+                                fit: BoxFit.contain,
+                                loadingBuilder: (context, child, progress) {
+                                  if (progress == null) return child;
+                                  return const Center(
+                                    child: CircularProgressIndicator(
+                                      strokeWidth: 2,
+                                    ),
+                                  );
+                                },
+                                errorBuilder: (context, error, stackTrace) =>
+                                    const Center(
+                                      child: Icon(Icons.broken_image),
+                                    ),
+                              ),
+                            ),
                           ),
-                        ),
+
+                          Positioned(
+                            top: 8,
+                            right: 8,
+                            child: CircleAvatar(
+                              backgroundColor: Colors.white,
+                              child: IconButton(
+                                onPressed: () {
+                                  context
+                                      .read<FavoriteViewModel>()
+                                      .toggleFavorite(product);
+                                },
+                                icon: Icon(
+                                  isFav
+                                      ? Icons.favorite
+                                      : Icons.favorite_border,
+                                  color: isFav ? Colors.red : Colors.grey,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
 
                       Padding(
@@ -103,7 +125,7 @@ class Productcard extends StatelessWidget {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            // 🔹 NAME
+                            // NAME
                             Text(
                               product.name,
                               maxLines: 1,
@@ -116,7 +138,7 @@ class Productcard extends StatelessWidget {
 
                             const SizedBox(height: 6),
 
-                            // 🔹 DESCRIPTION
+                            // DESCRIPTION
                             Text(
                               product.description,
                               maxLines: 2,
@@ -129,7 +151,6 @@ class Productcard extends StatelessWidget {
 
                             const SizedBox(height: 10),
 
-                            // 🔹 PRICE + BUTTON
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
@@ -141,24 +162,15 @@ class Productcard extends StatelessWidget {
                                     color: Colors.green,
                                   ),
                                 ),
-                                IconButton(
+
+                                buttonsim(
+                                  simplebtncolor: Colors.blue,
+                                  simplebuttontext: const Text("Add To Cart"),
                                   onPressed: () {
-                                    context
-                                        .read<FavoriteViewModel>()
-                                        .toggleFavorite(product);
-                                  },
-                                  icon: Icon(
-                                    isFav
-                                        ? Icons.favorite
-                                        : Icons.favorite_border,
-                                    color: isFav ? Colors.red : Colors.grey,
-                                  ),
-                                ),
-                                InkWell(
-                                  onTap: () {
                                     context
                                         .read<CartViewModel>()
                                         .addWithQuantity(product, quantity);
+
                                     ScaffoldMessenger.of(context).showSnackBar(
                                       SnackBar(
                                         content: Text(
@@ -167,11 +179,6 @@ class Productcard extends StatelessWidget {
                                       ),
                                     );
                                   },
-                                  child: buttonsim(
-                                    simplebtncolor: Colors.blue,
-                                    simplebuttontext: const Text("Add To Cart"),
-                                    onPressed: () {},
-                                  ),
                                 ),
                               ],
                             ),

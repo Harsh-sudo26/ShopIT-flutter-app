@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shopit/features/products/view/cart.dart';
 import 'package:shopit/features/products/view/fav.dart';
+import 'package:shopit/features/products/view/profile.dart';
 import 'package:shopit/widget/%20button.dart';
 import 'package:shopit/features/products/view/productcard.dart';
 import 'package:shopit/widget/textfieldwidget.dart';
@@ -19,7 +20,7 @@ class _homepageState extends State<homepage> {
   final List<Widget> _pages = [
     const HomeContent(),
     const CartScreen(),
-    const ProfilePage(),
+    const Profile(),
     const Favpage(),
   ];
 
@@ -190,13 +191,3 @@ class _HomeContentState extends State<HomeContent>
   }
 }
 
-class ProfilePage extends StatelessWidget {
-  const ProfilePage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Center(
-      child: Text("Profile Page", style: TextStyle(fontSize: 20)),
-    );
-  }
-}

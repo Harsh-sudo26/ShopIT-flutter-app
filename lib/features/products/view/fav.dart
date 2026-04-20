@@ -3,7 +3,6 @@ import 'package:provider/provider.dart';
 import 'package:shopit/features/products/model/favoriteviewmodel.dart';
 import 'package:shopit/features/products/view/productdetails.dart';
 
-
 class Favpage extends StatelessWidget {
   const Favpage({super.key});
 
@@ -18,7 +17,7 @@ class Favpage extends StatelessWidget {
         itemCount: favProducts.length,
         itemBuilder: (context, index) {
           final product = favProducts[index];
-          ListTile(
+          return ListTile(
             leading: Image.network(
               product.image,
               height: 50,
@@ -28,12 +27,17 @@ class Favpage extends StatelessWidget {
             title: Text(product.name),
             subtitle: Text("${product.price}"),
             trailing: IconButton(
-              icon: const Icon(Icons.delete),
+              icon: const Icon(Icons.delete, color: Colors.red),
               onPressed: () {
                 context.read<FavoriteViewModel>().toggleFavorite(product);
               },
             ),
-            onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => ProductDetail(product: product),)) ,
+            onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => ProductDetail(product: product),
+              ),
+            ),
           );
         },
       );
