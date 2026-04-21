@@ -16,7 +16,7 @@ class Favpage extends StatelessWidget {
       appBar: Appbarcus(
         title: 'Favorites',
         textSize: 25,
-        textColor: Colors.red,
+        textColor: const Color.fromARGB(255, 5, 57, 226),
       ),
 
       body: favProducts.isEmpty
@@ -35,9 +35,14 @@ class Favpage extends StatelessWidget {
                   title: Text(product.name),
                   subtitle: Text("${product.price}"),
                   trailing: IconButton(
-                    icon: const Icon(Icons.delete, color: Colors.red),
+                    icon: const Icon(
+                      Icons.delete,
+                      color: Color.fromARGB(255, 228, 17, 10),
+                    ),
                     onPressed: () {
-                      context.read()<CartViewModel>().removeFromCart(product);
+                      context.read<FavoriteViewModel>().removeFromFavorites(
+                        product,
+                      );
                     },
                   ),
                   onTap: () => Navigator.push(

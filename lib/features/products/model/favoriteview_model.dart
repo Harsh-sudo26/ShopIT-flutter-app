@@ -18,4 +18,9 @@ class FavoriteViewModel with ChangeNotifier {
     }
     notifyListeners();
   }
+
+  void removeFromFavorites (Product product) {
+    favorites.removeWhere((p) => p.id == product.id);
+    notifyListeners();
+  }
 }

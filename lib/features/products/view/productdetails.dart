@@ -198,14 +198,8 @@ class _ProductDetailState extends State<ProductDetail> {
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
                           ),
-                        ),
-                        buttontext: const Text(
-                          "Add to Cart",
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ), onPressed: () {  }, 
+                        ), onPressed: () {  },
+                         
                       ),
                     ),
                   ],

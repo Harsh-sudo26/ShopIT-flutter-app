@@ -2,21 +2,20 @@ import 'package:flutter/material.dart';
 
 class buttonsim extends StatelessWidget {
   final Color simplebtncolor;
-  final Text simplebuttontext;
+  final Widget simplebuttontext;
   final VoidCallback onPressed;
 
   const buttonsim({
     super.key,
     required this.simplebtncolor,
     required this.simplebuttontext,
-    required this.onPressed, required Text buttontext,
+    required this.onPressed,
   });
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: double.infinity, 
-      height: 45,
+      height: 40,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
           backgroundColor: simplebtncolor,

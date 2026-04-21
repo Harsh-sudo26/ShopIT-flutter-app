@@ -173,14 +173,7 @@ class _HomeContentState extends State<HomeContent>
                                 fontWeight: FontWeight.bold,
                                 color: Colors.white,
                               ),
-                            ), buttontext: const Text(
-                              "Shop Now",
-                              style: TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.white ,
-                              )
-                            )
+                            ), 
                           ),
                         ],
                       ),

@@ -152,48 +152,45 @@ class Search extends StatelessWidget {
                               const SizedBox(height: 10),
 
                               Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Text(
-                                    "₹${product.price.toStringAsFixed(0)}",
-                                    style: const TextStyle(
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.green,
+                                  Expanded(
+                                    flex: 2,
+                                    child: Text(
+                                      "₹${product.price.toStringAsFixed(0)}",
+                                      style: const TextStyle(
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.green,
+                                      ),
                                     ),
                                   ),
 
-                                  InkWell(
-                                    onTap: () {
-                                      context.read<CartViewModel>().addToCart(
-                                        product,
-                                        quantity: quantity,
-                                      );
+                                  const SizedBox(width: 8),
 
-                                      ScaffoldMessenger.of(
-                                        context,
-                                      ).showSnackBar(
-                                        SnackBar(
-                                          content: Text(
-                                            "${product.name} x$quantity added to cart",
-                                          ),
-                                        ),
-                                      );
-                                    },
+                                  Expanded(
+                                    flex: 3,
                                     child: buttonsim(
                                       simplebtncolor: Colors.blue,
                                       simplebuttontext: const Text(
-                                        "Add To Cart",
+                                        "Add",
+                                        style: TextStyle(color: Colors.white),
                                       ),
-                                      onPressed: () {}, buttontext: const Text(
-                                        "Add To Cart",
-                                        style: TextStyle(
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.white,
-                                        ),
-                                      ),
+                                      onPressed: () {
+                                        context.read<CartViewModel>().addToCart(
+                                          product,
+                                          quantity: 1,
+                                        );
+
+                                        ScaffoldMessenger.of(
+                                          context,
+                                        ).showSnackBar(
+                                          SnackBar(
+                                            content: Text(
+                                              "${product.name} added to cart",
+                                            ),
+                                          ),
+                                        );
+                                      },
                                     ),
                                   ),
                                 ],
