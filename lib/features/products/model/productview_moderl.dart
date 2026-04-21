@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shopit/features/products/model/products_model.dart';
-
-import '../repository/product_repo.dart';
+import 'package:shopit/features/products/repository/product_repo.dart';
 
 class ProductViewModel with ChangeNotifier {
   final ProductRepository _repo;
@@ -17,26 +16,30 @@ class ProductViewModel with ChangeNotifier {
   String? _error;
   String? get error => _error;
 
-  bool _isInitialized = false;
-
   Future<void> fetchProducts({bool forceRefresh = false}) async {
-  if (_isLoading) return;
+    if (_isLoading) return;
 
-  _setLoading(true);
-  _error = null;
+    _setLoading(true);
+    _error = null;
 
-  try {
-    final result = await _repo.getProducts();
-    _products = result;
-  } catch (e) {
-    _error = "Failed to load products";
+    try {
+      _products = await _repo.getProducts();
+    } catch (e) {
+      _error = "Failed to load products";
+      debugPrint("Product Error: $e");
+    }
+
+    _setLoading(false);
   }
-
-  _setLoading(false);
-}
 
   Future<void> refresh() async {
     await fetchProducts(forceRefresh: true);
+  }
+
+  void clear() {
+    _products = [];
+    _error = null;
+    notifyListeners();
   }
 
   void _setLoading(bool value) {
