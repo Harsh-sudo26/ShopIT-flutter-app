@@ -27,7 +27,7 @@ class ProductViewModel with ChangeNotifier {
     _error = null;
 
     try {
-      final result = await _repo.api.fetchProducts();
+      final result = await _repo.getProducts();
       _products = result;
       _isInitialized = true;
     } catch (e) {
