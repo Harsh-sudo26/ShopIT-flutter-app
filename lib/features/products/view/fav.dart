@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shopit/features/products/model/favoriteviewmodel.dart';
 import 'package:shopit/features/products/view/productdetails.dart';
+import 'package:shopit/widget/appbar.dart';
 
 class Favpage extends StatelessWidget {
   const Favpage({super.key});

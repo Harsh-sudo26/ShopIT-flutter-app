@@ -163,10 +163,8 @@ class Productcard extends StatelessWidget {
                                   ),
                                 ),
 
-                                buttonsim(
-                                  simplebtncolor: Colors.blue,
-                                  simplebuttontext: const Text("Add To Cart"),
-                                  onPressed: () {
+                                InkWell(
+                                  onTap: () {
                                     context
                                         .read<CartViewModel>()
                                         .addWithQuantity(product, quantity);
@@ -179,6 +177,11 @@ class Productcard extends StatelessWidget {
                                       ),
                                     );
                                   },
+                                  child: buttonsim(
+                                    simplebtncolor: Colors.blue,
+                                    simplebuttontext: const Text("Add To Cart"),
+                                    onPressed: () {},
+                                  ),
                                 ),
                               ],
                             ),

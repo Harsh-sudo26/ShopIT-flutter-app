@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shopit/features/products/model/cartviewmodel.dart';
 import 'package:shopit/features/products/model/productsmodel.dart';
+import 'package:shopit/widget/appbar.dart';
 
 class CartScreen extends StatelessWidget {
   const CartScreen({super.key});
@@ -11,7 +12,7 @@ class CartScreen extends StatelessWidget {
     final cartVm = Provider.of<CartViewModel>(context);
     final uniqueProducts = cartVm.carts.toSet().toList();
     return Scaffold(
-      appBar: AppBar(title: const Text("Cart")),
+      appBar: Appbarcus(title: 'Cart', textSize: 25, textColor: Colors.blue),
       body: ListView.builder(
         itemCount: uniqueProducts.length,
         itemBuilder: (context, index) {

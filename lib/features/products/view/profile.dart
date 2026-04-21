@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shopit/widget/appbar.dart';
 
 class Profile extends StatelessWidget {
   const Profile({super.key});
@@ -6,7 +7,6 @@ class Profile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Profile')),
       body: const Center(child: Text('Profile Content')),
     );
   }

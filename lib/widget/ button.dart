@@ -4,7 +4,7 @@ class buttonwig extends StatelessWidget {
   final Color butotncolor;
   final Icon buttonicon;
   final Text buttontext;
-
+  
   const buttonwig({
     super.key,
     required this.butotncolor,
