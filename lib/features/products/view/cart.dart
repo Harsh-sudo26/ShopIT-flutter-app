@@ -39,12 +39,12 @@ class CartScreen extends StatelessWidget {
 
                     title: Text(item.product.name),
 
-                    // ✅ CORRECT QUANTITY
+                   
                     subtitle: Text(
                       "₹${item.product.price}  x${item.quantity}",
                     ),
 
-                    // ✅ CONTROLS
+                
                     trailing: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
