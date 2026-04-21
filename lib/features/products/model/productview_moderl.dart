@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:shopit/features/products/repository/product_repo.dart';
 import 'package:shopit/features/products/model/products_model.dart';
-import 'package:shopit/features/products/service/product_api.dart';
+
+import '../repository/product_repo.dart';
 
 class ProductViewModel with ChangeNotifier {
-late final ProductRepository _repo;
+  final ProductRepository _repo;
 
-  // 🔹 STATE
+  ProductViewModel(this._repo);
+
   List<Product> _products = [];
   List<Product> get products => List.unmodifiable(_products);
 
@@ -18,11 +19,8 @@ late final ProductRepository _repo;
 
   bool _isInitialized = false;
 
-  ProductViewModel(ProductRepository read); 
-
-  // 🔹 LOAD PRODUCTS
   Future<void> fetchProducts({bool forceRefresh = false}) async {
-    if (_isLoading) return; // prevent duplicate calls
+    if (_isLoading) return;
     if (_isInitialized && !forceRefresh) return;
 
     _setLoading(true);
@@ -40,19 +38,12 @@ late final ProductRepository _repo;
     _setLoading(false);
   }
 
-
   Future<void> refresh() async {
     await fetchProducts(forceRefresh: true);
   }
 
-  // 🔹 PRIVATE HELPER
   void _setLoading(bool value) {
     _isLoading = value;
     notifyListeners();
   }
 }
-// class ProductViewModel with ChangeNotifier {
-//   final ProductRepository _repo;
-
-//   ProductViewModel(this._repo);
-// }
