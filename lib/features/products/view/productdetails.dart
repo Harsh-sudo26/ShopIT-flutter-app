@@ -180,7 +180,7 @@ class _ProductDetailState extends State<ProductDetail> {
                           context,
                           listen: false,
                         );
-                        cartVm.addToCart(product);
+                       cartVm.addToCart(product, quantity: quantity);
 
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(

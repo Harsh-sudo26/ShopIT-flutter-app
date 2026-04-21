@@ -166,9 +166,10 @@ class Search extends StatelessWidget {
 
                                   InkWell(
                                     onTap: () {
-                                      context
-                                          .read<CartViewModel>()
-                                          .addToCart(product);
+                                      context.read<CartViewModel>().addToCart(
+                                        product,
+                                        quantity: quantity,
+                                      );
 
                                       ScaffoldMessenger.of(
                                         context,

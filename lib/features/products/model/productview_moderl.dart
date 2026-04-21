@@ -5,8 +5,9 @@ import 'package:shopit/features/products/model/products_model.dart';
 class ProductViewModel with ChangeNotifier {
   final ProductRepository _repo = ProductRepository();
 
+  // 🔹 STATE
   List<Product> _products = [];
-  List<Product> get products => _products;
+  List<Product> get products => List.unmodifiable(_products);
 
   bool _isLoading = false;
   bool get isLoading => _isLoading;
@@ -14,36 +15,36 @@ class ProductViewModel with ChangeNotifier {
   String? _error;
   String? get error => _error;
 
+  bool _isInitialized = false; 
+
   // 🔹 LOAD PRODUCTS
-  Future<void> fetchProducts() async {
-    _isLoading = true;
+  Future<void> fetchProducts({bool forceRefresh = false}) async {
+    if (_isLoading) return; // prevent duplicate calls
+    if (_isInitialized && !forceRefresh) return;
+
+    _setLoading(true);
     _error = null;
-    notifyListeners();
 
     try {
-      _products = await _repo.fetchProducts();
+      final result = await _repo.fetchProducts();
+      _products = result;
+      _isInitialized = true;
     } catch (e) {
-      _error = e.toString();
+      _error = "Failed to load products";
+      debugPrint("Product Error: $e");
     }
 
-    _isLoading = false;
-    notifyListeners();
+    _setLoading(false);
   }
 
-  // 🔹 ADD PRODUCT
-  Future<void> addProduct(Product product) async {
-    try {
-      await _repo.addProduct(product);
-      _products.add(product);
-      notifyListeners();
-    } catch (e) {
-      _error = "Failed to add product";
-      notifyListeners();
-    }
-  }
 
-  // 🔹 REFRESH (useful for pull-to-refresh)
   Future<void> refresh() async {
-    await fetchProducts();
+    await fetchProducts(forceRefresh: true);
+  }
+
+  // 🔹 PRIVATE HELPER
+  void _setLoading(bool value) {
+    _isLoading = value;
+    notifyListeners();
   }
 }
