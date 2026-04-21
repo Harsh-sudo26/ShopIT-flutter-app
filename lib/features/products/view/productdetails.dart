@@ -190,19 +190,22 @@ class _ProductDetailState extends State<ProductDetail> {
                           ),
                         );
                       },
-                      child: const buttonwig(
-                        butotncolor: Colors.blue,
-                        buttonicon: Icon(
-                          Icons.shopping_cart,
-                          color: Colors.white,
-                        ),
-                        buttontext: Text(
+                      child: buttonsim(
+                        simplebtncolor: Colors.blue,
+                        simplebuttontext: const Text(
                           "Add to Cart",
                           style: TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
+                        buttontext: const Text(
+                          "Add to Cart",
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ), onPressed: () {  }, 
                       ),
                     ),
                   ],

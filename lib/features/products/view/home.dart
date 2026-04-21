@@ -165,15 +165,22 @@ class _HomeContentState extends State<HomeContent>
                           const SizedBox(height: 10),
                           buttonsim(
                             simplebtncolor: Colors.blue,
-                            simplebuttontext: const Text(
-                              "Explore Now",
+                            
+                            onPressed: () {}, simplebuttontext:const Text(
+                              "Shop Now",
                               style: TextStyle(
-                                fontSize: 16,
+                                fontSize: 18,
                                 fontWeight: FontWeight.bold,
                                 color: Colors.white,
                               ),
-                            ),
-                            onPressed: () {},
+                            ), buttontext: const Text(
+                              "Shop Now",
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white ,
+                              )
+                            )
                           ),
                         ],
                       ),

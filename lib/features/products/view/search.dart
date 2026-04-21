@@ -186,7 +186,14 @@ class Search extends StatelessWidget {
                                       simplebuttontext: const Text(
                                         "Add To Cart",
                                       ),
-                                      onPressed: () {},
+                                      onPressed: () {}, buttontext: const Text(
+                                        "Add To Cart",
+                                        style: TextStyle(
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.white,
+                                        ),
+                                      ),
                                     ),
                                   ),
                                 ],
