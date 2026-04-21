@@ -1,4 +1,4 @@
-import 'package:shopit/features/products/model/productsmodel.dart';
+import 'package:shopit/features/products/model/products_model.dart';
 import 'product_api.dart';
 
 class ProductRepository {

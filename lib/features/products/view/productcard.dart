@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:shopit/features/products/model/cartviewmodel.dart';
-import 'package:shopit/features/products/model/favoriteviewmodel.dart';
-import 'package:shopit/features/products/model/productviewmoderl.dart';
+import 'package:shopit/features/products/model/cartview_model.dart';
+import 'package:shopit/features/products/model/favoriteview_model.dart';
+import 'package:shopit/features/products/model/productview_moderl.dart';
 import 'package:shopit/features/products/view/productdetails.dart';
 import 'package:shopit/widget/%20button.dart';
 
@@ -167,8 +167,8 @@ class Productcard extends StatelessWidget {
                                   onTap: () {
                                     context
                                         .read<CartViewModel>()
-                                        .addWithQuantity(product, quantity);
-
+                                        .addToCart(product);
+                                    
                                     ScaffoldMessenger.of(context).showSnackBar(
                                       SnackBar(
                                         content: Text(
@@ -180,7 +180,19 @@ class Productcard extends StatelessWidget {
                                   child: buttonsim(
                                     simplebtncolor: Colors.blue,
                                     simplebuttontext: const Text("Add To Cart"),
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      context
+                                          .read<CartViewModel>()
+                                          .addToCart(product);
+                                  
+                                      ScaffoldMessenger.of(context).showSnackBar(
+                                        SnackBar(
+                                          content: Text(
+                                            "${product.name} x$quantity added to cart",
+                                          ),
+                                        ),
+                                      );
+                                    },
                                   ),
                                 ),
                               ],

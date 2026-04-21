@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shopit/features/products/data/product_repo.dart';
-import 'package:shopit/features/products/model/productsmodel.dart';
+import 'package:shopit/features/products/model/products_model.dart';
 
 class ProductViewModel with ChangeNotifier {
   final ProductRepository _repo = ProductRepository();

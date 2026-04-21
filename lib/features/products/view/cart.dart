@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:shopit/features/products/model/cartviewmodel.dart';
-import 'package:shopit/features/products/model/productsmodel.dart';
+import 'package:shopit/features/products/model/cartview_model.dart';
+import 'package:shopit/features/products/model/products_model.dart';
 import 'package:shopit/widget/appbar.dart';
 
 class CartScreen extends StatelessWidget {
@@ -10,7 +10,7 @@ class CartScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final cartVm = Provider.of<CartViewModel>(context);
-    final uniqueProducts = cartVm.carts.toSet().toList();
+    final uniqueProducts = cartVm.items.toSet().toList();
     return Scaffold(
       appBar: Appbarcus(title: 'Cart', textSize: 25, textColor: Colors.blue),
       body: ListView.builder(
@@ -18,8 +18,8 @@ class CartScreen extends StatelessWidget {
         itemBuilder: (context, index) {
           final product = uniqueProducts[index];
 
-          final qty = cartVm.carts
-              .where((item) => item.id == product.id)
+          final qty = cartVm.items
+              .where((item) => item.product.id == product.product.id)
               .length;
 
           return Card(
@@ -28,7 +28,7 @@ class CartScreen extends StatelessWidget {
               leading: ClipRRect(
                 borderRadius: BorderRadius.circular(8),
                 child: Image.network(
-                  product.image,
+                  product.product.image,
                   width: 50,
                   height: 50,
                   fit: BoxFit.cover,
@@ -36,14 +36,14 @@ class CartScreen extends StatelessWidget {
                 ),
               ),
 
-              title: Text(product.name),
+              title: Text(product.product.name),
 
-              subtitle: Text("₹${product.price}  x$qty"),
+              subtitle: Text("₹${product.product.price}  x$qty"),
 
               trailing: IconButton(
                 icon: const Icon(Icons.delete, color: Colors.red),
                 onPressed: () {
-                  cartVm.removeFromCart(product);
+                  cartVm.removeFromCart(product as Product);
                 },
               ),
             ),

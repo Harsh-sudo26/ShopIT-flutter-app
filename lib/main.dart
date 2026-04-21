@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:shopit/features/products/model/cartviewmodel.dart';
-import 'package:shopit/features/products/model/favoriteviewmodel.dart';
-import 'package:shopit/features/products/model/productviewmoderl.dart';
+import 'package:shopit/features/products/model/cartview_model.dart';
+import 'package:shopit/features/products/model/favoriteview_model.dart';
+import 'package:shopit/features/products/model/productview_moderl.dart';
 import 'package:shopit/screens/splash.dart';
 
 void main() {

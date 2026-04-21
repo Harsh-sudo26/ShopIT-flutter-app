@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:shopit/features/products/model/cartviewmodel.dart';
-import 'package:shopit/features/products/model/productsmodel.dart';
+import 'package:shopit/features/products/model/cartview_model.dart';
+import 'package:shopit/features/products/model/products_model.dart';
 import 'package:shopit/widget/%20button.dart';
 // import 'package:shopit/widget/button.dart';
 
@@ -180,7 +180,7 @@ class _ProductDetailState extends State<ProductDetail> {
                           context,
                           listen: false,
                         );
-                        cartVm.addWithQuantity(product, quantity);
+                        cartVm.addToCart(product);
 
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
