@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:shopit/features/products/data/product_repo.dart';
+import 'package:shopit/features/products/repository/product_repo.dart';
 import 'package:shopit/features/products/model/products_model.dart';
+import 'package:shopit/features/products/service/product_api.dart';
 
 class ProductViewModel with ChangeNotifier {
-  final ProductRepository _repo = ProductRepository();
+  final ProductRepository _repo = ProductRepository(api: ProductApi());
 
   // 🔹 STATE
   List<Product> _products = [];
@@ -26,7 +27,7 @@ class ProductViewModel with ChangeNotifier {
     _error = null;
 
     try {
-      final result = await _repo.fetchProducts();
+      final result = await _repo.api.fetchProducts();
       _products = result;
       _isInitialized = true;
     } catch (e) {
