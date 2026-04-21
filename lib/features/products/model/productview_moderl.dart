@@ -4,7 +4,7 @@ import 'package:shopit/features/products/model/products_model.dart';
 import 'package:shopit/features/products/service/product_api.dart';
 
 class ProductViewModel with ChangeNotifier {
-  final ProductRepository _repo = ProductRepository(api: ProductApi());
+late final ProductRepository _repo;
 
   // 🔹 STATE
   List<Product> _products = [];
@@ -16,7 +16,9 @@ class ProductViewModel with ChangeNotifier {
   String? _error;
   String? get error => _error;
 
-  bool _isInitialized = false; 
+  bool _isInitialized = false;
+
+  ProductViewModel(ProductRepository read); 
 
   // 🔹 LOAD PRODUCTS
   Future<void> fetchProducts({bool forceRefresh = false}) async {
@@ -49,3 +51,8 @@ class ProductViewModel with ChangeNotifier {
     notifyListeners();
   }
 }
+// class ProductViewModel with ChangeNotifier {
+//   final ProductRepository _repo;
+
+//   ProductViewModel(this._repo);
+// }
