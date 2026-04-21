@@ -16,17 +16,7 @@ This project demonstrates real-world app development practices including state m
 
 This project follows the MVVM (Model-View-ViewModel) architecture:
 
-lib/
-│
-├── features/
-│   └── products/
-│       ├── model/        # Data models
-│       ├── view/         # UI screens
-│       ├── viewmodel/    # Business logic & state
-│
-├── widget/               # Reusable UI components
-├── screens/              # App-level screens
-└── main.dart             # Entry point
+
 🔹 Why MVVM?
 Separation of concerns
 Easier testing & debugging
@@ -38,15 +28,7 @@ Provider (State Management)
 Material UI
 
 Flutter enables building cross-platform apps from a single codebase, making development faster and efficient.
-
-📸 Screenshots
-
-(Add screenshots here for better presentation)
-
-Home Screen	Product Details	Cart
-
-	
-	
+		
 ⚙️ Installation & Setup
 Clone the repository:
 git clone https://github.com/Harsh-sudo26/ShopIT-flutter-app.git
