@@ -19,27 +19,21 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         // 🔹 API
-        Provider(
-          create: (_) => ProductApi(),
-        ),
+        Provider(create: (_) => ProductApi()),
 
         // 🔹 Repository
         Provider(
-          create: (context) => ProductRepository(
-            api: context.read<ProductApi>(),
-          ),
+          create: (context) =>
+              ProductRepository(api: context.read<ProductApi>()),
         ),
 
         // 🔹 ViewModels
-        ChangeNotifierProvider(
-          create: (_) => FavoriteViewModel(),
-        ),
-        ChangeNotifierProvider(
-          create: (_) => CartViewModel(),
-        ),
+        ChangeNotifierProvider(create: (_) => FavoriteViewModel()),
+        ChangeNotifierProvider(create: (_) => CartViewModel()),
         ChangeNotifierProvider(
           create: (context) =>
-              ProductViewModel(context.read<ProductRepository>()),
+              ProductViewModel(context.read<ProductRepository>())
+                ..fetchProducts(),
         ),
       ],
       child: MaterialApp(
