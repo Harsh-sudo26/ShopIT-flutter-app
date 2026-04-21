@@ -20,23 +20,20 @@ class ProductViewModel with ChangeNotifier {
   bool _isInitialized = false;
 
   Future<void> fetchProducts({bool forceRefresh = false}) async {
-    if (_isLoading) return;
-    if (_isInitialized && !forceRefresh) return;
+  if (_isLoading) return;
 
-    _setLoading(true);
-    _error = null;
+  _setLoading(true);
+  _error = null;
 
-    try {
-      final result = await _repo.getProducts();
-      _products = result;
-      _isInitialized = true;
-    } catch (e) {
-      _error = "Failed to load products";
-      debugPrint("Product Error: $e");
-    }
-
-    _setLoading(false);
+  try {
+    final result = await _repo.getProducts();
+    _products = result;
+  } catch (e) {
+    _error = "Failed to load products";
   }
+
+  _setLoading(false);
+}
 
   Future<void> refresh() async {
     await fetchProducts(forceRefresh: true);
