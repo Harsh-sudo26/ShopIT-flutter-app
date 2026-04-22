@@ -32,7 +32,7 @@ class CartScreen extends StatelessWidget {
                         width: 50,
                         height: 50,
                         fit: BoxFit.cover,
-                        errorBuilder: (_, __, ___) =>
+                        errorBuilder: (_, _, _) =>
                             const Icon(Icons.image),
                       ),
                     ),
