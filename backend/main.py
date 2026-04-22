@@ -70,7 +70,7 @@ products = [
     "name": "Backpack",
     "price": 1499,
     "description": "Durable backpack with multiple compartments.",
-    "image": "https://m.media-amazon.com/images/I/81KEhY6iYFL._UL1500_.jpg"
+    "image": "https://icon.in/cdn/shop/files/1_3a15443f-843d-459b-80a3-dd10ce6760eb.jpg?v=1735285627"
   },
   {
     "id": 9,
@@ -84,7 +84,7 @@ products = [
     "name": "Keyboard",
     "price": 2499,
     "description": "Mechanical keyboard with tactile feedback.",
-    "image": "https://m.media-amazon.com/images/I/71Wj2G+8QyL._SL1500_.jpg"
+    "image": "https://vlebazaar.in/image/cache/catalog//B0BF9MN992/Cosmic-Byte-CB-GK-32-Themis-61-Key-Mechanical-Per-Key-RGB-Gaming-Keyboard-with-O-1000x1000w.jpg"
   },
   {
     "id": 11,
@@ -98,35 +98,35 @@ products = [
     "name": "Bluetooth Speaker",
     "price": 2999,
     "description": "Portable speaker with deep bass and long battery life.",
-    "image": "https://m.media-amazon.com/images/I/71FQkX6fQRL._SL1500_.jpg"
+    "image": "https://englaon.com.au/cdn/shop/files/G100-product-img-1-front-2.jpg?v=1701394259&width=1214"
   },
   {
     "id": 13,
     "name": "Smart TV",
     "price": 39999,
     "description": "4K smart TV with streaming apps and voice control.",
-    "image": "https://m.media-amazon.com/images/I/81o7pXzC-XL._SL1500_.jpg"
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTk2GAEv2BeZxDOAVaJZ2KF-YKarCTdaaZAyw&s"
   },
   {
     "id": 14,
     "name": "Headphones",
     "price": 3499,
     "description": "Over-ear headphones with immersive sound.",
-    "image": "https://m.media-amazon.com/images/I/71rnjN4a5JL._SL1500_.jpg"
+    "image": "https://m.media-amazon.com/images/I/61x3wjCUG5L._AC_UF1000,1000_QL80_.jpg"
   },
   {
     "id": 15,
     "name": "Tablet",
     "price": 25999,
     "description": "Lightweight tablet for entertainment and productivity.",
-    "image": "https://m.media-amazon.com/images/I/71QXzV6rYpL._SL1500_.jpg"
+    "image": "https://img.global.news.samsung.com/global/wp-content/uploads/2024/09/Samsung-Mobile-Galaxy-Tab-S10-Series-Samsungs-First-Galaxy-AI-Tablet_main1_F.jpg"
   },
   {
     "id": 16,
     "name": "Fitness Band",
     "price": 1999,
     "description": "Fitness band with health tracking features.",
-    "image": "https://m.media-amazon.com/images/I/61t2yy9uX7L._SL1500_.jpg"
+    "image": "https://in.amazfit.com/cdn/shop/products/Black-1-sw.jpg?v=1701612314"
   }
 ]
 
