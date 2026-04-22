@@ -27,18 +27,14 @@ class AuthToggle extends StatelessWidget {
               child: Container(
                 padding: const EdgeInsets.symmetric(vertical: 10),
                 decoration: BoxDecoration(
-                  color: selectedIndex == 0
-                      ? const Color.fromARGB(255, 51, 69, 168)
-                      : Colors.transparent,
+                  color: selectedIndex == 0 ? Colors.blue : Colors.transparent,
                   borderRadius: BorderRadius.circular(40),
                 ),
                 child: Center(
                   child: Text(
                     "Sign In",
                     style: TextStyle(
-                      color: selectedIndex == 0
-                          ? Colors.white
-                          : Colors.black54,
+                      color: selectedIndex == 0 ? Colors.white : Colors.black54,
                     ),
                   ),
                 ),
@@ -52,8 +48,8 @@ class AuthToggle extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(vertical: 10),
                 decoration: BoxDecoration(
                   color: selectedIndex == 1
-                      ? Colors.white
-                      : Colors.transparent,
+                      ? Colors.blue
+                      : const Color.fromARGB(0, 8, 5, 156),
                   borderRadius: BorderRadius.circular(40),
                 ),
                 child: Center(
@@ -61,7 +57,7 @@ class AuthToggle extends StatelessWidget {
                     "Create Account",
                     style: TextStyle(
                       color: selectedIndex == 1
-                          ? Colors.blue
+                          ? const Color.fromARGB(255, 255, 255, 255)
                           : Colors.black54,
                     ),
                   ),

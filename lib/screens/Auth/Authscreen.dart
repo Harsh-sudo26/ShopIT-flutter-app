@@ -5,8 +5,6 @@ import 'package:shopit/screens/Auth/login.dart';
 import 'package:shopit/screens/Auth/signup.dart';
 import 'package:shopit/widget/togle.dart';
 
-
-
 class AuthScreen extends StatelessWidget {
   const AuthScreen({super.key});
 
@@ -19,18 +17,20 @@ class AuthScreen extends StatelessWidget {
         children: [
           const SizedBox(height: 60),
 
-          const AuthToggle(),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: const AuthToggle(),
+          ),
 
           const SizedBox(height: 20),
 
-        
           Expanded(
-            child: vm.selectedIndex == 0 ? const LoginView():const SignupView(),
+            child: vm.selectedIndex == 0
+                ? const LoginView()
+                : const SignupView(),
           ),
         ],
       ),
     );
   }
 }
-
-
