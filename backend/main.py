@@ -20,113 +20,113 @@ products = [
     "id": 1,
     "name": "iPhone 14",
     "price": 999,
-    "description": "The Apple iPhone 14 combines sleek design with powerful performance, making it a reliable choice for everyday use.",
-    "image": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/MGFH4?wid=1144&hei=1144&fmt=jpeg&qlt=90"
+    "description": "The Apple iPhone 14 combines elegant design with powerful performance, making it ideal for everyday use. It features a 6.1-inch Super Retina XDR display that delivers sharp visuals, deep blacks, and vibrant colors for an immersive viewing experience. Powered by the A15 Bionic chip, it ensures smooth multitasking, fast app launches, and efficient battery performance. The advanced dual-camera system allows you to capture stunning photos and cinematic videos, even in low-light conditions. With safety features like Crash Detection and Emergency SOS via satellite, it adds an extra layer of security to your daily life.",
+    "image": "https://m.media-amazon.com/images/I/61bK6PMOC3L._SL1500_.jpg"
   },
   {
     "id": 2,
     "name": "Shoes",
     "price": 1999,
-    "description": "Lightweight and breathable shoes designed for comfort and performance.",
-    "image": "https://shop.teamsg.in/cdn/shop/files/1_ee84a279-8cc7-463e-b282-a22b398f553f.png?v=1720251201"
+    "description": "These lightweight and breathable shoes are designed to provide maximum comfort and performance throughout the day. Made with high-quality mesh fabric, they allow proper airflow to keep your feet cool and dry during long walks, runs, or workouts. The cushioned sole offers excellent shock absorption, reducing stress on your feet and joints. Their flexible design ensures natural movement, while the durable outsole provides strong grip and stability. Perfect for gym sessions, running, or casual daily wear.",
+    "image": "https://m.media-amazon.com/images/I/71dEY4Neo3L._UL1500_.jpg"
   },
   {
     "id": 3,
     "name": "Watch",
     "price": 1939,
-    "description": "Smartwatch with fitness tracking and notifications.",
-    "image": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/watch-card-40-se-202603_FMT_WHH?wid=508&hei=472&fmt=p-jpg&qlt=95"
+    "description": "This modern smartwatch is built to keep you connected, active, and informed throughout your day. It tracks your daily activities including steps, calories burned, heart rate, and sleep patterns with high accuracy. With smart notifications, you can receive calls, messages, and app alerts directly on your wrist without checking your phone. The sleek and stylish design makes it suitable for both casual and formal occasions. Its long-lasting battery ensures uninterrupted usage, making it a reliable companion for fitness and lifestyle tracking.",
+    "image": "https://m.media-amazon.com/images/I/61y2VVWcGBL._SL1500_.jpg"
   },
   {
     "id": 4,
     "name": "Earbuds",
     "price": 19900,
-    "description": "Wireless earbuds with noise cancellation and premium sound.",
-    "image": "https://www.flashify.in/cdn/shop/products/61sRKTAfrhL.jpg"
+    "description": "Experience premium audio quality with these wireless earbuds designed for comfort and performance. Equipped with advanced noise cancellation technology, they block out unwanted background noise, allowing you to fully immerse yourself in music or calls. The ergonomic design ensures a secure and comfortable fit for long listening sessions. With deep bass, clear vocals, and balanced sound, they deliver an exceptional audio experience. The compact charging case provides extended battery life, making them perfect for travel, workouts, and daily use.",
+    "image": "https://m.media-amazon.com/images/I/61SUj2aKoEL._SL1500_.jpg"
   },
   {
     "id": 5,
     "name": "Cover",
     "price": 19299,
-    "description": "Durable silicone phone cover for protection.",
-    "image": "https://tiimg.tistatic.com/fp/1/007/827/comfortable-light-in-weight-durable-soft-silicone-plain-simple-mobile-cover--078.jpg"
+    "description": "Protect your smartphone with this durable and stylish silicone case designed for everyday use. The soft-touch material offers a comfortable grip while effectively safeguarding your device from scratches, accidental drops, and minor impacts. Its slim and lightweight design adds minimal bulk, preserving the original look of your phone. Precise cutouts ensure easy access to buttons, ports, and camera without any inconvenience. A perfect blend of protection, functionality, and style.",
+    "image": "https://m.media-amazon.com/images/I/61uhVZC1UqL._SL1500_.jpg"
   },
   {
     "id": 6,
     "name": "Charger",
     "price": 1999,
-    "description": "20W fast charging adapter with safety features.",
-    "image": "https://m.media-amazon.com/images/I/51VM2jCx6kL._AC_UF1000,1000_QL80_.jpg"
+    "description": "This 20W fast charging adapter is engineered to deliver quick and efficient power to your devices. With advanced safety features, it protects against overheating, overcharging, and short circuits, ensuring safe usage at all times. Its compact and lightweight design makes it easy to carry in your bag or pocket, making it ideal for travel, office, or home use. Compatible with a wide range of smartphones and accessories, it provides reliable and consistent performance.",
+    "image": "https://m.media-amazon.com/images/I/51VM2jCx6kL._SL1500_.jpg"
   },
   {
     "id": 7,
     "name": "Laptop",
     "price": 65999,
-    "description": "High-performance laptop for work and gaming.",
+    "description": "This high-performance laptop is designed to handle both productivity and entertainment with ease. Powered by a fast processor and supported by ample RAM, it ensures smooth multitasking, quick application launches, and seamless performance. The full HD display offers sharp visuals and vibrant colors, enhancing your viewing experience whether you're working, streaming, or gaming. With a long-lasting battery and a sleek design, it is perfect for students, professionals, and gamers on the go.",
     "image": "https://m.media-amazon.com/images/I/71jG+e7roXL._SL1500_.jpg"
   },
   {
     "id": 8,
     "name": "Backpack",
     "price": 1499,
-    "description": "Durable backpack with multiple compartments.",
-    "image": "https://icon.in/cdn/shop/files/1_3a15443f-843d-459b-80a3-dd10ce6760eb.jpg?v=1735285627"
+    "description": "This versatile backpack is designed for daily use, combining durability, comfort, and style. It features multiple spacious compartments to keep your belongings organized, including a dedicated section for laptops and accessories. The padded shoulder straps ensure maximum comfort even during long hours of use, while the water-resistant material protects your items from unexpected weather conditions. Ideal for school, college, travel, and work.",
+    "image": "https://m.media-amazon.com/images/I/81vpsIs58WL._UL1500_.jpg"
   },
   {
     "id": 9,
     "name": "Gaming Mouse",
     "price": 1299,
-    "description": "High-precision gaming mouse with RGB lighting.",
+    "description": "Upgrade your gaming setup with this high-precision gaming mouse designed for speed and accuracy. It features adjustable DPI settings for customized sensitivity, allowing you to perform better in competitive gameplay. The ergonomic design ensures a comfortable grip for long gaming sessions, reducing hand fatigue. With programmable buttons and vibrant RGB lighting, it adds both functionality and style to your gaming experience.",
     "image": "https://m.media-amazon.com/images/I/61mpMH5TzkL._SL1500_.jpg"
   },
   {
     "id": 10,
     "name": "Keyboard",
     "price": 2499,
-    "description": "Mechanical keyboard with tactile feedback.",
-    "image": "https://vlebazaar.in/image/cache/catalog//B0BF9MN992/Cosmic-Byte-CB-GK-32-Themis-61-Key-Mechanical-Per-Key-RGB-Gaming-Keyboard-with-O-1000x1000w.jpg"
+    "description": "This mechanical keyboard delivers a premium typing and gaming experience with its tactile feedback and durable switches. Designed for long-term use, it offers fast response times and high precision, making it suitable for both gamers and professionals. The customizable RGB lighting enhances its appearance, while the sturdy build ensures reliability. Its ergonomic layout improves typing comfort and efficiency.",
+    "image": "https://m.media-amazon.com/images/I/71kr3WAj1FL._SL1500_.jpg"
   },
   {
     "id": 11,
     "name": "Power Bank",
     "price": 1799,
-    "description": "Portable power bank with fast charging support.",
+    "description": "Stay connected wherever you go with this high-capacity power bank. It supports fast charging and allows you to charge multiple devices simultaneously. Its compact and lightweight design makes it easy to carry during travel or daily commutes. Built with advanced safety features, it protects your devices from overcharging and overheating, ensuring reliable performance at all times.",
     "image": "https://m.media-amazon.com/images/I/71lVwl3q-kL._SL1500_.jpg"
   },
   {
     "id": 12,
     "name": "Bluetooth Speaker",
     "price": 2999,
-    "description": "Portable speaker with deep bass and long battery life.",
-    "image": "https://englaon.com.au/cdn/shop/files/G100-product-img-1-front-2.jpg?v=1701394259&width=1214"
+    "description": "Enjoy powerful and immersive sound with this portable Bluetooth speaker. It delivers deep bass, clear vocals, and balanced audio for an enhanced listening experience. The long battery life ensures uninterrupted music playback, while its water-resistant design makes it suitable for outdoor use, parties, and travel. Easy connectivity allows seamless pairing with your devices.",
+    "image": "https://m.media-amazon.com/images/I/71hSH8k6pPL._SL1500_.jpg"
   },
   {
     "id": 13,
     "name": "Smart TV",
     "price": 39999,
-    "description": "4K smart TV with streaming apps and voice control.",
-    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTk2GAEv2BeZxDOAVaJZ2KF-YKarCTdaaZAyw&s"
+    "description": "Experience entertainment like never before with this 4K smart TV featuring ultra-high-definition resolution and vibrant colors. It comes with built-in streaming apps such as Netflix and YouTube, allowing you to enjoy your favorite shows and movies effortlessly. The smart interface and voice control features provide a convenient and modern viewing experience. Its sleek design enhances the look of your living space.",
+    "image": "https://m.media-amazon.com/images/I/81cP2Nqz9pL._SL1500_.jpg"
   },
   {
     "id": 14,
     "name": "Headphones",
     "price": 3499,
-    "description": "Over-ear headphones with immersive sound.",
-    "image": "https://m.media-amazon.com/images/I/61x3wjCUG5L._AC_UF1000,1000_QL80_.jpg"
+    "description": "These over-ear headphones are designed to deliver immersive sound quality with excellent noise isolation. The cushioned ear cups provide superior comfort, making them ideal for long listening sessions. With a foldable and lightweight design, they are easy to carry and store. Perfect for music, movies, and gaming, they offer a rich and balanced audio experience.",
+    "image": "https://m.media-amazon.com/images/I/61CGHv6kmWL._SL1500_.jpg"
   },
   {
     "id": 15,
     "name": "Tablet",
     "price": 25999,
-    "description": "Lightweight tablet for entertainment and productivity.",
-    "image": "https://img.global.news.samsung.com/global/wp-content/uploads/2024/09/Samsung-Mobile-Galaxy-Tab-S10-Series-Samsungs-First-Galaxy-AI-Tablet_main1_F.jpg"
+    "description": "This sleek and lightweight tablet is perfect for both entertainment and productivity. It features a large high-resolution display for an enjoyable viewing experience, whether you're watching videos, reading, or browsing. Powered by a fast processor, it ensures smooth performance for multitasking. Its portable design and long battery life make it an ideal companion for travel and daily use.",
+    "image": "https://m.media-amazon.com/images/I/71X2b8f3PML._SL1500_.jpg"
   },
   {
     "id": 16,
     "name": "Fitness Band",
     "price": 1999,
-    "description": "Fitness band with health tracking features.",
-    "image": "https://in.amazfit.com/cdn/shop/products/Black-1-sw.jpg?v=1701612314"
+    "description": "Track your health and fitness goals with this advanced fitness band. It monitors your daily activities such as steps, calories burned, heart rate, and sleep patterns with high accuracy. The lightweight and water-resistant design ensures comfortable all-day wear. With a long battery life and smart notifications, it keeps you connected while helping you maintain a healthy lifestyle.",
+    "image": "https://m.media-amazon.com/images/I/61t2yy9uX7L._SL1500_.jpg"
   }
 ]
 
