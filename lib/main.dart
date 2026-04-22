@@ -18,10 +18,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        // 🔹 API
+        
         Provider(create: (_) => ProductApi()),
 
-        // 🔹 Repository
+        
         Provider(
           create: (context) =>
               ProductRepository(api: context.read<ProductApi>()),
@@ -35,6 +35,8 @@ class MyApp extends StatelessWidget {
               ProductViewModel(context.read<ProductRepository>())
                 ..fetchProducts(),
         ),
+        
+        
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

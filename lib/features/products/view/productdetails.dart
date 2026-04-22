@@ -40,7 +40,6 @@ class _ProductDetailState extends State<ProductDetail> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // 🔹 IMAGE (optimized)
               RepaintBoundary(
                 child: AspectRatio(
                   aspectRatio: 1.2,
@@ -67,7 +66,6 @@ class _ProductDetailState extends State<ProductDetail> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    // 🔹 NAME
                     Text(
                       product.name,
                       style: const TextStyle(
@@ -78,19 +76,17 @@ class _ProductDetailState extends State<ProductDetail> {
 
                     const SizedBox(height: 10),
 
-                    // 🔹 PRICE
                     Text(
                       "₹${product.price.toStringAsFixed(0)}",
                       style: const TextStyle(
                         fontSize: 20,
-                        color: Colors.green,
+                        color: Color.fromARGB(255, 9, 13, 231),
                         fontWeight: FontWeight.bold,
                       ),
                     ),
 
                     const SizedBox(height: 20),
 
-                    // 🔹 QUANTITY (optimized taps)
                     Container(
                       padding: const EdgeInsets.symmetric(
                         horizontal: 12,
@@ -132,7 +128,6 @@ class _ProductDetailState extends State<ProductDetail> {
 
                     const SizedBox(height: 15),
 
-                    // 🔹 TOTAL
                     Text(
                       "Total: ₹${(product.price * quantity).toStringAsFixed(0)}",
                       style: const TextStyle(
@@ -143,7 +138,6 @@ class _ProductDetailState extends State<ProductDetail> {
                     ),
 
                     const SizedBox(height: 20),
-
                     // 🔹 DESCRIPTION (card optimized)
                     Container(
                       width: double.infinity,
@@ -173,23 +167,7 @@ class _ProductDetailState extends State<ProductDetail> {
 
                     const SizedBox(height: 25),
 
-                    // 🔹 BUTTON (less rebuild cost)
-                    GestureDetector(
-                      onTap: () {
-                        final cartVm = Provider.of<CartViewModel>(
-                          context,
-                          listen: false,
-                        );
-                       cartVm.addToCart(product, quantity: quantity);
-
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
-                            content: Text(
-                              "${product.name} x$quantity added to cart",
-                            ),
-                          ),
-                        );
-                      },
+                    Center(
                       child: buttonsim(
                         simplebtncolor: Colors.blue,
                         simplebuttontext: const Text(
@@ -198,8 +176,22 @@ class _ProductDetailState extends State<ProductDetail> {
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
                           ),
-                        ), onPressed: () {  },
-                         
+                        ),
+                        onPressed: () {
+                          final cartVm = Provider.of<CartViewModel>(
+                            context,
+                            listen: false,
+                          );
+                          cartVm.addToCart(product, quantity: quantity);
+
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text(
+                                "${product.name} x$quantity added to cart",
+                              ),
+                            ),
+                          );
+                        },
                       ),
                     ),
                   ],
