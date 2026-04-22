@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:shopit/screens/Auth/Authscreen.dart';
 import 'package:shopit/screens/Auth/login.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -23,7 +24,7 @@ class _SplashScreenState extends State<SplashScreen> {
         context,
         PageRouteBuilder(
           transitionDuration: const Duration(milliseconds: 600),
-          pageBuilder: (_, _, _) => const Login(),
+          pageBuilder: (_, _, _) => const AuthScreen(),
           transitionsBuilder: (_, animation, _, child) {
             return FadeTransition(opacity: animation, child: child);
           },
@@ -34,7 +35,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   void dispose() {
-    _timer?.cancel(); // 🔥 prevents memory leak
+    _timer?.cancel();
     super.dispose();
   }
 

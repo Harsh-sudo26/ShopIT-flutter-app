@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:shopit/features/products/model/auth_viewmodel.dart';
 
-class AuthToggle extends StatefulWidget {
+class AuthToggle extends StatelessWidget {
   const AuthToggle({super.key});
 
   @override
-  State<AuthToggle> createState() => _AuthToggleState();
-}
-
-class _AuthToggleState extends State<AuthToggle> {
-  int selectedIndex = 0;
-
-  @override
   Widget build(BuildContext context) {
+    final selectedIndex = context.select<AuthViewModel, int>(
+      (vm) => vm.selectedIndex,
+    );
+
+    final vm = context.read<AuthViewModel>();
+
     return Container(
       padding: const EdgeInsets.all(5),
       decoration: BoxDecoration(
@@ -22,9 +23,7 @@ class _AuthToggleState extends State<AuthToggle> {
         children: [
           Expanded(
             child: GestureDetector(
-              onTap: () {
-                setState(() => selectedIndex = 0);
-              },
+              onTap: () => vm.switchTab(0),
               child: Container(
                 padding: const EdgeInsets.symmetric(vertical: 10),
                 decoration: BoxDecoration(
@@ -38,7 +37,7 @@ class _AuthToggleState extends State<AuthToggle> {
                     "Sign In",
                     style: TextStyle(
                       color: selectedIndex == 0
-                          ? const Color.fromARGB(255, 255, 255, 255)
+                          ? Colors.white
                           : Colors.black54,
                     ),
                   ),
@@ -48,20 +47,22 @@ class _AuthToggleState extends State<AuthToggle> {
           ),
           Expanded(
             child: GestureDetector(
-              onTap: () {
-                setState(() => selectedIndex = 1);
-              },
+              onTap: () => vm.switchTab(1),
               child: Container(
                 padding: const EdgeInsets.symmetric(vertical: 10),
                 decoration: BoxDecoration(
-                  color: selectedIndex == 1 ? Colors.white : Colors.transparent,
+                  color: selectedIndex == 1
+                      ? Colors.white
+                      : Colors.transparent,
                   borderRadius: BorderRadius.circular(40),
                 ),
                 child: Center(
                   child: Text(
                     "Create Account",
                     style: TextStyle(
-                      color: selectedIndex == 1 ? Colors.blue : Colors.black54,
+                      color: selectedIndex == 1
+                          ? Colors.blue
+                          : Colors.black54,
                     ),
                   ),
                 ),
