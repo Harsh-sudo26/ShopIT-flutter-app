@@ -49,7 +49,7 @@ products = [
     "name": "Cover",
     "price": 19299,
     "description": "Protect your smartphone with this durable and stylish silicone case designed for everyday use. The soft-touch material offers a comfortable grip while effectively safeguarding your device from scratches, accidental drops, and minor impacts. Its slim and lightweight design adds minimal bulk, preserving the original look of your phone. Precise cutouts ensure easy access to buttons, ports, and camera without any inconvenience. A perfect blend of protection, functionality, and style.",
-    "image": "https://m.media-amazon.com/images/I/61uhVZC1UqL._SL1500_.jpg"
+    "image": "https://m.media-amazon.com/images/I/711gY2O6sbL.jpg"
   },
   {
     "id": 6,
