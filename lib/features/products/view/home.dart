@@ -8,7 +8,6 @@ import 'package:shopit/widget/%20button.dart';
 
 import 'package:shopit/widget/textfieldwidget.dart';
 
-// ---------------- HOME PAGE ----------------
 class homepage extends StatefulWidget {
   const homepage({super.key});
 
@@ -58,7 +57,6 @@ class _homepageState extends State<homepage> {
   }
 }
 
-// ---------------- HOME CONTENT ----------------
 class HomeContent extends StatefulWidget {
   const HomeContent({super.key});
 
@@ -87,7 +85,6 @@ class _HomeContentState extends State<HomeContent>
       child: ListView(
         padding: const EdgeInsets.all(12),
         children: [
-          // ---------------- HEADER ----------------
           Container(
             height: 70,
             padding: const EdgeInsets.symmetric(horizontal: 12),
@@ -113,7 +110,6 @@ class _HomeContentState extends State<HomeContent>
 
           const SizedBox(height: 15),
 
-          // ---------------- TITLE ----------------
           const Text(
             'Curated\nExcellence.',
             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 28),
@@ -121,7 +117,6 @@ class _HomeContentState extends State<HomeContent>
 
           const SizedBox(height: 15),
 
-          // ---------------- SEARCH ----------------
           Textfield(
             icon: const Icon(Icons.search_rounded),
             hinttext: 'Search',
@@ -131,19 +126,14 @@ class _HomeContentState extends State<HomeContent>
 
           const SizedBox(height: 20),
 
-          // ---------------- BANNER ----------------
           Stack(
             alignment: Alignment.bottomRight,
             children: [
-              SizedBox(
-                height: 220,
-                width: double.infinity,
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(16),
-                  child: Image.asset(
-                    "assets/images/image.png",
-                    fit: BoxFit.cover,
-                  ),
+              ClipRRect(
+                borderRadius: BorderRadius.circular(16),
+                child: Image.asset(
+                  "assets/images/image.png",
+                  fit: BoxFit.contain,
                 ),
               ),
 
@@ -185,7 +175,6 @@ class _HomeContentState extends State<HomeContent>
 
           const SizedBox(height: 20),
 
-          // ---------------- PRODUCTS ----------------
           const RepaintBoundary(child: Productcard()),
         ],
       ),
