@@ -56,7 +56,7 @@ products = [
     "name": "Charger",
     "price": 1999,
     "description": "This 20W fast charging adapter is engineered to deliver quick and efficient power to your devices. With advanced safety features, it protects against overheating, overcharging, and short circuits, ensuring safe usage at all times. Its compact and lightweight design makes it easy to carry in your bag or pocket, making it ideal for travel, office, or home use. Compatible with a wide range of smartphones and accessories, it provides reliable and consistent performance.",
-    "image": "https://m.media-amazon.com/images/I/51VM2jCx6kL._SL1500_.jpg"
+    "image": "https://brownliving.in/cdn/shop/products/biodegradable-eco-friendly-wheat-straw-phone-case-mobile-cover-pacific-blue-177-13090-agc-hk-13-008-tech-accessories-brown-living-555270.jpg?v=1682960778"
   },
   {
     "id": 7,
