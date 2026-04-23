@@ -1,19 +1,27 @@
 import 'dart:convert';
+
 import 'package:http/http.dart' as http;
-import '../model/products_model.dart';
+import 'package:shopit/features/products/model/products_model.dart';
 
 class ProductApi {
   Future<List<Product>> fetchProducts() async {
-    final response = await http.get(
-      Uri.parse("https://shopit-flutter-app.onrender.com/products"),
-    );
+    try {
+      final response = await http
+          .get(Uri.parse("https://shopit-flutter-app.onrender.com/products"))
+          .timeout(const Duration(seconds: 30));
 
-    if (response.statusCode == 200) {
-      final List data = jsonDecode(response.body);
+      print("STATUS: ${response.statusCode}");
 
-      return data.map((e) => Product.fromJson(e)).toList();
-    } else {
-      throw Exception("Failed to load products");
+      if (response.statusCode == 200) {
+        final List data = jsonDecode(response.body);
+        return data.map((e) => Product.fromJson(e)).toList();
+      } else {
+        print("BODY: ${response.body}");
+        throw Exception("Failed to load products");
+      }
+    } catch (e) {
+      print("ERROR: $e");
+      throw Exception("API Error: $e");
     }
   }
 }
