@@ -70,7 +70,7 @@ products = [
     "name": "Backpack",
     "price": 1499,
     "description": "This versatile backpack is designed for daily use, combining durability, comfort, and style. It features multiple spacious compartments to keep your belongings organized, including a dedicated section for laptops and accessories. The padded shoulder straps ensure maximum comfort even during long hours of use, while the water-resistant material protects your items from unexpected weather conditions. Ideal for school, college, travel, and work.",
-    "image": "https://m.media-amazon.com/images/I/81vpsIs58WL._UL1500_.jpg"
+    "image": "https://icon.in/cdn/shop/files/1_50b8664b-0c2b-477a-9d86-ed6fce060859.jpg?v=1756985540&width=1946"
   },
   {
     "id": 9,
@@ -98,14 +98,14 @@ products = [
     "name": "Bluetooth Speaker",
     "price": 2999,
     "description": "Enjoy powerful and immersive sound with this portable Bluetooth speaker. It delivers deep bass, clear vocals, and balanced audio for an enhanced listening experience. The long battery life ensures uninterrupted music playback, while its water-resistant design makes it suitable for outdoor use, parties, and travel. Easy connectivity allows seamless pairing with your devices.",
-    "image": "https://m.media-amazon.com/images/I/71hSH8k6pPL._SL1500_.jpg"
+    "image": "https://avstore.in/cdn/shop/files/1.AVStore-JBL-PartyBox-Encore-Essential-Portable-Bluetooth-Speaker-With-Light-Display-Front-Angled-View-Hero.jpg?v=1682414405"
   },
   {
     "id": 13,
     "name": "Smart TV",
     "price": 39999,
     "description": "Experience entertainment like never before with this 4K smart TV featuring ultra-high-definition resolution and vibrant colors. It comes with built-in streaming apps such as Netflix and YouTube, allowing you to enjoy your favorite shows and movies effortlessly. The smart interface and voice control features provide a convenient and modern viewing experience. Its sleek design enhances the look of your living space.",
-    "image": "https://m.media-amazon.com/images/I/81cP2Nqz9pL._SL1500_.jpg"
+    "image": "https://s3.infra.brandquad.io/accounts-media/SHRP/DAM/origin/5ed1ddf8-4e73-11ef-a427-bea7e36404f4.jpg"
   },
   {
     "id": 14,
@@ -119,14 +119,14 @@ products = [
     "name": "Tablet",
     "price": 25999,
     "description": "This sleek and lightweight tablet is perfect for both entertainment and productivity. It features a large high-resolution display for an enjoyable viewing experience, whether you're watching videos, reading, or browsing. Powered by a fast processor, it ensures smooth performance for multitasking. Its portable design and long battery life make it an ideal companion for travel and daily use.",
-    "image": "https://m.media-amazon.com/images/I/71X2b8f3PML._SL1500_.jpg"
+    "image": "https://m.media-amazon.com/images/I/71O5U+2PKWL._AC_UF1000,1000_QL80_.jpg"
   },
   {
     "id": 16,
     "name": "Fitness Band",
     "price": 1999,
     "description": "Track your health and fitness goals with this advanced fitness band. It monitors your daily activities such as steps, calories burned, heart rate, and sleep patterns with high accuracy. The lightweight and water-resistant design ensures comfortable all-day wear. With a long battery life and smart notifications, it keeps you connected while helping you maintain a healthy lifestyle.",
-    "image": "https://m.media-amazon.com/images/I/61t2yy9uX7L._SL1500_.jpg"
+    "image": "https://furper.com/cdn/shop/products/xiaomi-mi-band-8-fitness-band-with-spo2-sensor-162-inch-amoled-display-smart-band-xiaomi-black-185546_large.jpg?v=1682013540"
   }
 ]
 
