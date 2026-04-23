@@ -13,32 +13,26 @@ class AuthViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
- 
-  Future<void> login(
-    String email,
-    String password,
-    BuildContext context,
-  ) async {
+  Future<bool> login(email, password, BuildContext context) async {
     _isLoading = true;
     notifyListeners();
 
     try {
-    
       await Future.delayed(const Duration(seconds: 2));
 
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text("Login Successful")),
-      );
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(const SnackBar(content: Text("Login Successful")));
 
-     
       switchTab(0);
     } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text("Login Failed")),
-      );
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(const SnackBar(content: Text("Login Failed")));
     }
 
     _isLoading = false;
     notifyListeners();
+    return true;
   }
 }

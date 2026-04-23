@@ -41,29 +41,38 @@ class LoginView extends StatelessWidget {
               controller: email,
             ),
             SizedBox(height: 100),
-            authViewModel.isLoading
-                ? const CircularProgressIndicator()
-                : buttonsim(
-                    simplebtncolor: Colors.blue,
-                    simplebuttontext: const Text(
-                      "Login",
-                      style: TextStyle(
-                        fontSize: 20,
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    onPressed: () async {
-                      authViewModel.login(
-                        email.text.trim(),
-                        password.text.trim(),
-                        await Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => homepage()),
-                        ),
-                      );
-                    },
+            if (authViewModel.isLoading)
+              const CircularProgressIndicator()
+            else
+              buttonsim(
+                simplebtncolor: Colors.blue,
+                simplebuttontext: const Text(
+                  "Login",
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
                   ),
+                ),
+                onPressed: () async {
+                  final authenticated = await authViewModel.login(
+                    email.text.trim(),
+                    password.text.trim(),
+                    context,
+                  );
+
+                  if (authenticated) {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(builder: (_) => const homepage()),
+                    );
+                  } else {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(content: Text("Login Failed")),
+                    );
+                  }
+                },
+              ),
           ],
         ),
       ),
