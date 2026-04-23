@@ -28,7 +28,7 @@ products = [
     "name": "realnme",
     "price": 1999,
     "description": "These lightweight and breathable shoes are designed to provide maximum comfort and performance throughout the day. Made with high-quality mesh fabric, they allow proper airflow to keep your feet cool and dry during long walks, runs, or workouts. The cushioned sole offers excellent shock absorption, reducing stress on your feet and joints. Their flexible design ensures natural movement, while the durable outsole provides strong grip and stability. Perfect for gym sessions, running, or casual daily wear.",
-    "image": "https://m.media-amazon.com/images/I/71dEY4Neo3L._UL1500_.jpg"
+    "image": "https://sell.gameloot.in/wp-content/uploads/sites/4/2024/01/phone.jpg"
   },
   {
     "id": 3,
