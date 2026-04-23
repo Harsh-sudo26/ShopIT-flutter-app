@@ -56,7 +56,7 @@ products = [
     "name": "Charger",
     "price": 1999,
     "description": "This 20W fast charging adapter is engineered to deliver quick and efficient power to your devices. With advanced safety features, it protects against overheating, overcharging, and short circuits, ensuring safe usage at all times. Its compact and lightweight design makes it easy to carry in your bag or pocket, making it ideal for travel, office, or home use. Compatible with a wide range of smartphones and accessories, it provides reliable and consistent performance.",
-    "image": "https://m.media-amazon.com/images/I/51VM2jCx6kL._AC_UF1000,1000_QL80_.jpg"
+    "image": "https://www.boat-lifestyle.com/cdn/shop/files/Artboard4_cd15c598-86aa-4c7d-89ad-38f05ee25a90_1800x.png?v=1748931851"
   },
   {
     "id": 7,
