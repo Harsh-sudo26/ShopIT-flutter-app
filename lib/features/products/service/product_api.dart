@@ -7,7 +7,7 @@ class ProductApi {
   Future<List<Product>> fetchProducts() async {
     try {
       final response = await http
-          .get(Uri.parse("https://shopit-flutter-app.onrender.com/products"))
+          .get(Uri.parse("http://192.168.1.11:8000/products/"))
           .timeout(const Duration(seconds: 30));
 
       print("STATUS: ${response.statusCode}");
