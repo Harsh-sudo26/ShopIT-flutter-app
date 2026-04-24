@@ -1,4 +1,4 @@
-import 'package:shopit/features/products/model/products_model.dart';
+import 'package:shopit/features/products/viewmodel/products_model.dart';
 import 'package:shopit/features/products/service/product_api.dart';
 
 

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 import 'package:provider/provider.dart';
-import 'package:shopit/features/products/model/auth_viewmodel.dart';
+import 'package:shopit/features/products/viewmodel/auth_viewmodel.dart';
 
 class Profile extends StatelessWidget {
   const Profile({super.key});

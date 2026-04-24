@@ -1,7 +1,7 @@
 // ignore: file_names
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:shopit/features/products/model/auth_viewmodel.dart';
+import 'package:shopit/features/products/viewmodel/auth_viewmodel.dart';
 import 'package:shopit/screens/Auth/login.dart';
 import 'package:shopit/screens/Auth/signup.dart';
 import 'package:shopit/widget/togle.dart';

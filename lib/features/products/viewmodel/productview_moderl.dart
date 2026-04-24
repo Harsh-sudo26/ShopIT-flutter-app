@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shopit/features/products/model/products_model.dart';
+import 'package:shopit/features/products/viewmodel/products_model.dart';
 import 'package:shopit/features/products/repository/product_repo.dart';
 
 class ProductViewModel with ChangeNotifier {

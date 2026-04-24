@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shopit/features/products/model/products_model.dart';
+import 'package:shopit/features/products/viewmodel/products_model.dart';
 
 class FavoriteViewModel with ChangeNotifier {
   final List<Product> _favorites = [];

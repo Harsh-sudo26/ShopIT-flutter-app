@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:shopit/features/products/model/cartview_model.dart';
+import 'package:shopit/features/products/viewmodel/cartview_model.dart';
 import 'package:shopit/widget/appbar.dart' show Appbarcus;
 
 class CartScreen extends StatelessWidget {
