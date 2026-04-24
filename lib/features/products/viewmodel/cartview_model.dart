@@ -4,10 +4,9 @@ import 'products_model.dart';
 class CartViewModel extends ChangeNotifier {
   final List<CartItem> _items = [];
 
-  // 🔹 SAFE GETTER
+ 
   List<CartItem> get items => List.unmodifiable(_items);
 
-  // 🔹 ADD TO CART (FIXED)
   void addToCart(Product product, {int quantity = 1}) {
     final index = _items.indexWhere((e) => e.product.id == product.id);
 
@@ -22,13 +21,13 @@ class CartViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  // 🔹 REMOVE ITEM
+ 
   void removeFromCart(Product product) {
     _items.removeWhere((e) => e.product.id == product.id);
     notifyListeners();
   }
 
-  // 🔹 INCREASE QTY
+  
   void increaseQty(Product product) {
     final index = _items.indexWhere((e) => e.product.id == product.id);
 
@@ -40,7 +39,7 @@ class CartViewModel extends ChangeNotifier {
     }
   }
 
-  // 🔹 DECREASE QTY
+ 
   void decreaseQty(Product product) {
     final index = _items.indexWhere((e) => e.product.id == product.id);
 
@@ -59,7 +58,7 @@ class CartViewModel extends ChangeNotifier {
     }
   }
 
-  // 🔹 TOTAL PRICE
+ 
   double get totalPrice {
     return _items.fold(
       0,
@@ -67,12 +66,12 @@ class CartViewModel extends ChangeNotifier {
     );
   }
 
-  // 🔹 TOTAL ITEMS (bonus)
+  
   int get totalItems {
     return _items.fold(0, (sum, item) => sum + item.quantity);
   }
 
-  // 🔹 CLEAR CART (bonus)
+  
   void clearCart() {
     _items.clear();
     notifyListeners();

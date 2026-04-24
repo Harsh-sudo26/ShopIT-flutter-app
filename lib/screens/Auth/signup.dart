@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shopit/features/products/viewmodel/auth_viewmodel.dart';
-import 'package:shopit/features/products/view/home.dart';
 import 'package:shopit/widget/%20button.dart';
 import 'package:shopit/widget/textfieldwidget.dart';
 

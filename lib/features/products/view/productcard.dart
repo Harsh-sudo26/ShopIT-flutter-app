@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shopit/features/products/viewmodel/cartview_model.dart';
 import 'package:shopit/features/products/viewmodel/favoriteview_model.dart';
-import 'package:shopit/features/products/viewmodel/productview_moderl.dart';
 import 'package:shopit/features/products/view/productdetails.dart';
+import 'package:shopit/features/products/viewmodel/productview_moderl.dart';
 import 'package:shopit/widget/%20button.dart';
 
 class Productcard extends StatelessWidget {
@@ -12,8 +12,7 @@ class Productcard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final favvm = context.watch<FavoriteViewModel>();
-    int quantity = 1;
-
+    final vm = context.watch<ProductViewModel>();
     return Consumer<ProductViewModel>(
       builder: (context, vm, child) {
         if (vm.isLoading) {
@@ -81,6 +80,7 @@ class Productcard extends StatelessWidget {
                               child: Image.network(
                                 product.image,
                                 fit: BoxFit.contain,
+
                                 loadingBuilder: (context, child, progress) {
                                   if (progress == null) return child;
                                   return const Center(
@@ -89,6 +89,7 @@ class Productcard extends StatelessWidget {
                                     ),
                                   );
                                 },
+
                                 errorBuilder: (context, error, stackTrace) =>
                                     const Center(
                                       child: Icon(Icons.broken_image),
@@ -178,9 +179,7 @@ class Productcard extends StatelessWidget {
                                     onPressed: () {
                                       context.read<CartViewModel>().addToCart(
                                         product,
-                                        quantity: 1,
                                       );
-
                                       ScaffoldMessenger.of(
                                         context,
                                       ).showSnackBar(

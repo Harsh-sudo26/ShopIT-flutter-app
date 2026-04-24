@@ -7,15 +7,18 @@ import 'package:shopit/features/products/viewmodel/cartview_model.dart';
 import 'package:shopit/features/products/viewmodel/favoriteview_model.dart';
 import 'package:shopit/features/products/viewmodel/productview_moderl.dart';
 import 'package:shopit/features/products/repository/product_repo.dart';
-import 'package:shopit/features/products/service/Authservices/Auth_service.dart';
 import 'package:shopit/features/products/service/product_api.dart';
+import 'package:shopit/features/products/service/Authservices/Auth_service.dart';
 import 'package:shopit/features/products/view/home.dart';
 import 'package:shopit/screens/Auth/firebase_options.dart';
 import 'package:shopit/screens/Auth/Authscreen.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
   runApp(const MyApp());
 }
 
@@ -26,23 +29,30 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        Provider(create: (_) => ProductApi()),
+       
+        Provider<ProductApi>(
+          create: (_) => ProductApi(),
+        ),
 
-        Provider(
+        Provider<ProductRepository>(
           create: (context) =>
               ProductRepository(api: context.read<ProductApi>()),
         ),
 
-        ChangeNotifierProvider(create: (_) => FavoriteViewModel()),
-        ChangeNotifierProvider(create: (_) => CartViewModel()),
-
-        ChangeNotifierProvider(
+       
+        ChangeNotifierProvider<ProductViewModel>(
           create: (context) =>
               ProductViewModel(context.read<ProductRepository>()),
         ),
 
-        ChangeNotifierProvider(create: (_) => AuthViewModel(AuthService())),
+        // Other ViewModels
+        ChangeNotifierProvider(create: (_) => FavoriteViewModel()),
+        ChangeNotifierProvider(create: (_) => CartViewModel()),
+        ChangeNotifierProvider(
+          create: (_) => AuthViewModel(AuthService()),
+        ),
       ],
+
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'ShopIT',
@@ -59,9 +69,11 @@ class MyApp extends StatelessWidget {
                 body: Center(child: CircularProgressIndicator()),
               );
             }
+
             if (snapshot.hasData) {
-              return homepage();
+              return const Homepage();
             }
+
             return const AuthScreen();
           },
         ),
