@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shopit/features/products/model/auth_viewmodel.dart';
 import 'package:shopit/features/products/view/home.dart';
-import 'package:shopit/screens/Auth/Authscreen.dart';
 import 'package:shopit/widget/%20button.dart';
 import 'package:shopit/widget/textfieldwidget.dart';
 
@@ -38,7 +37,7 @@ class LoginView extends StatelessWidget {
               icon: const Icon(Icons.password),
               hinttext: 'Enter Pasword',
               rowtext: '',
-              controller: email,
+              controller: password,
             ),
             SizedBox(height: 100),
             if (authViewModel.isLoading)
