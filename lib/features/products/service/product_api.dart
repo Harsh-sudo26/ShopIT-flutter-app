@@ -10,42 +10,34 @@ class ProductApi {
       "https://shopit-flutter-app.onrender.com/products";
 
   Future<List<Product>> fetchProducts() async {
-    try {
-      final uri = Uri.parse(_baseUrl);
-
-      final response = await http
-          .get(
-            uri,
-            headers: {
-              "Content-Type": "application/json",
-              "Accept": "application/json",
-            },
-          )
-          .timeout(const Duration(seconds: 200));
-
-      debugPrint("STATUS: ${response.statusCode}");
-
-      if (response.statusCode == 200) {
-        final decoded = jsonDecode(response.body);
-
-        if (decoded is List) {
-          return decoded.map((e) => Product.fromJson(e)).toList();
-        } else {
-          throw Exception("Invalid response format");
-        }
-      } else {
-        debugPrint("BODY: ${response.body}");
-        throw HttpException("Server error: ${response.statusCode}");
-      }
-    } on SocketException {
-      throw Exception("No Internet connection");
-    } on HttpException catch (e) {
-      throw Exception(e.message);
-    } on FormatException {
-      throw Exception("Bad response format");
-    } catch (e) {
-      debugPrint("API ERROR: $e");
-      throw Exception("Unexpected error: $e");
-    }
+  try {
+    return await _makeRequest();
+  } catch (e) {
+    debugPrint("Retrying API...");
+    await Future.delayed(const Duration(seconds: 3));
+    return await _makeRequest(); 
   }
+}
+
+Future<List<Product>> _makeRequest() async {
+  final uri = Uri.parse(_baseUrl);
+
+  final response = await http
+      .get(uri)
+      .timeout(const Duration(seconds: 60));
+
+  debugPrint("STATUS: ${response.statusCode}");
+
+  if (response.statusCode == 200) {
+    final decoded = jsonDecode(response.body);
+
+    if (decoded is List) {
+      return decoded.map((e) => Product.fromJson(e)).toList();
+    } else {
+      throw Exception("Invalid response format");
+    }
+  } else {
+    throw Exception("Server error: ${response.statusCode}");
+  }
+}
 }

@@ -16,11 +16,11 @@ class ProductViewModel with ChangeNotifier {
   String? _error;
   String? get error => _error;
 
-  bool _initialized = false; 
+  bool _initialized = false;
+
   Future<void> fetchProducts({bool forceRefresh = false}) async {
     if (_isLoading) return;
 
-    
     if (_initialized && !forceRefresh) return;
 
     _setLoading(true);
@@ -29,15 +29,15 @@ class ProductViewModel with ChangeNotifier {
     try {
       final result = await _repo
           .getProducts()
-          .timeout(const Duration(seconds: 10)); 
+          .timeout(const Duration(seconds: 60));
 
       _products = result;
       _initialized = true;
     } catch (e) {
-      _error = "Failed to load products";
+      _error = e.toString(); 
       debugPrint("Product Error: $e");
     } finally {
-      _setLoading(false); 
+      _setLoading(false);
     }
   }
 
