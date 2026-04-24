@@ -12,7 +12,7 @@ class Profile extends StatelessWidget {
       body: Center(
         child: ElevatedButton(
           onPressed: () async {
-            await context.read<AuthViewModel>().signout(context);
+            await context.read<AuthViewModel>().logout(context);
           },
           child: Text("Logout"),
         ),

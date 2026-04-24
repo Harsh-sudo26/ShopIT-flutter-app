@@ -1,13 +1,20 @@
-// ignore_for_file: strict_top_level_inference, use_build_context_synchronously
-
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:shopit/features/products/service/Authservices/Auth_service.dart';
 
 class AuthViewModel extends ChangeNotifier {
+  final AuthService service;
+
+  AuthViewModel(this.service);
+
   int _selectedIndex = 0;
   int get selectedIndex => _selectedIndex;
+
   bool _isLoading = false;
   bool get isLoading => _isLoading;
+
+  String? _error;
+  String? get error => _error;
 
   void switchTab(int index) {
     _selectedIndex = index;
@@ -15,96 +22,58 @@ class AuthViewModel extends ChangeNotifier {
   }
 
   Future<bool> login(email, password, BuildContext context) async {
-    final _auth = FirebaseAuth.instance;
-    _isLoading = true;
-    notifyListeners();
-
     try {
-      await _auth.signInWithEmailAndPassword(
-        email: email.trim(),
-        password: password.trim(),
-      );
+      _isLoading = true;
+      _error = null;
+      notifyListeners();
 
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(const SnackBar(content: Text("Login Successful")));
-
-      switchTab(0);
+      await service.login(email, password);
 
       return true;
     } on FirebaseAuthException catch (e) {
-      String message = "Login Failed";
-
-      if (e.code == 'user-not-found') {
-        message = "No user found";
-      } else if (e.code == 'wrong-password') {
-        message = "Wrong password";
-      } else if (e.code == 'invalid-email') {
-        message = "Invalid email";
-      }
-
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(SnackBar(content: Text(message)));
-
+      _error = _handleAuthError(e);
       return false;
     } catch (e) {
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(const SnackBar(content: Text("Something went wrong")));
+      _error = "Something went wrong";
       return false;
     } finally {
       _isLoading = false;
       notifyListeners();
     }
   }
-
-  //sign up auth
 
   Future<bool> signup(email, password, BuildContext context) async {
-    final _auth = FirebaseAuth.instance;
-    _isLoading = true;
-    notifyListeners();
-
     try {
-      await _auth.createUserWithEmailAndPassword(
-        email: email.trim(),
-        password: password.trim(),
-      );
+      _isLoading = true;
+      _error = null;
+      notifyListeners();
 
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(const SnackBar(content: Text("Signup Successful")));
+      await service.signup(email, password);
 
       return true;
     } on FirebaseAuthException catch (e) {
-      String message = e.message ?? "Signup failed";
-
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(SnackBar(content: Text(message)));
-
+      _error = e.message ?? "Signup failed";
       return false;
     } finally {
       _isLoading = false;
       notifyListeners();
     }
   }
-  //logout
 
-  Future<bool> signout(BuildContext context) async {
-    final _auth = FirebaseAuth.instance;
-    try {
-      await _auth.signOut();
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(const SnackBar(content: Text("Logged out successfully")));
-      return true;
-    } catch (e) {
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(const SnackBar(content: Text("Logged out successfully")));
-      return false;
+  Future<void> logout(BuildContext context) async {
+    await service.logout();
+  }
+
+  String _handleAuthError(FirebaseAuthException e) {
+    switch (e.code) {
+      case 'user-not-found':
+        return "No user found";
+      case 'wrong-password':
+        return "Wrong password";
+      case 'invalid-email':
+        return "Invalid email";
+      default:
+        return "Login failed";
     }
   }
 }

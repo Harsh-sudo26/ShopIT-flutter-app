@@ -7,6 +7,7 @@ import 'package:shopit/features/products/model/cartview_model.dart';
 import 'package:shopit/features/products/model/favoriteview_model.dart';
 import 'package:shopit/features/products/model/productview_moderl.dart';
 import 'package:shopit/features/products/repository/product_repo.dart';
+import 'package:shopit/features/products/service/Authservices/Auth_service.dart';
 import 'package:shopit/features/products/service/product_api.dart';
 import 'package:shopit/features/products/view/home.dart';
 import 'package:shopit/screens/Auth/firebase_options.dart';
@@ -40,7 +41,7 @@ class MyApp extends StatelessWidget {
               ProductViewModel(context.read<ProductRepository>()),
         ),
 
-        ChangeNotifierProvider(create: (_) => AuthViewModel()),
+        ChangeNotifierProvider(create: (_) => AuthViewModel(AuthService())),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
