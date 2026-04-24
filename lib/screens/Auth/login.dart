@@ -61,10 +61,7 @@ class LoginView extends StatelessWidget {
                   );
 
                   if (authenticated) {
-                    Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(builder: (_) => const homepage()),
-                    );
+                    await authViewModel.login(email, password, context);
                   } else {
                     ScaffoldMessenger.of(context).showSnackBar(
                       const SnackBar(content: Text("Login Failed")),

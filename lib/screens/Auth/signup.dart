@@ -45,7 +45,6 @@ class _SignupViewState extends State<SignupView> {
 
             const SizedBox(height: 20),
 
-            
             Textfield(
               icon: const Icon(Icons.email),
               hinttext: 'Enter Email',
@@ -53,7 +52,6 @@ class _SignupViewState extends State<SignupView> {
               controller: email,
             ),
 
-           
             Textfield(
               icon: const Icon(Icons.lock),
               hinttext: 'Enter Password',
@@ -63,7 +61,6 @@ class _SignupViewState extends State<SignupView> {
 
             const SizedBox(height: 40),
 
-           
             if (authViewModel.isLoading)
               const CircularProgressIndicator()
             else
@@ -85,11 +82,10 @@ class _SignupViewState extends State<SignupView> {
                   );
 
                   if (success) {
-                    Navigator.pushReplacement(
+                    await authViewModel.signup(
+                      email as String,
+                      password as String,
                       context,
-                      MaterialPageRoute(
-                        builder: (_) => const homepage(),
-                      ),
                     );
                   }
                 },

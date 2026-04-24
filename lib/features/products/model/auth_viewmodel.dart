@@ -1,4 +1,4 @@
-// ignore_for_file: use_build_context_synchronously
+// ignore_for_file: strict_top_level_inference, use_build_context_synchronously
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -14,11 +14,7 @@ class AuthViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<bool> login(
-    String email,
-    String password,
-    BuildContext context,
-  ) async {
+  Future<bool> login(email, password, BuildContext context) async {
     final _auth = FirebaseAuth.instance;
     _isLoading = true;
     notifyListeners();
@@ -65,11 +61,7 @@ class AuthViewModel extends ChangeNotifier {
 
   //sign up auth
 
-  Future<bool> signup(
-    String email,
-    String password,
-    BuildContext context,
-  ) async {
+  Future<bool> signup(email, password, BuildContext context) async {
     final _auth = FirebaseAuth.instance;
     _isLoading = true;
     notifyListeners();
@@ -98,6 +90,21 @@ class AuthViewModel extends ChangeNotifier {
       notifyListeners();
     }
   }
+  //logout
 
-  // with google
+  Future<bool> signout(BuildContext context) async {
+    final _auth = FirebaseAuth.instance;
+    try {
+      await _auth.signOut();
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(const SnackBar(content: Text("Logged out successfully")));
+      return true;
+    } catch (e) {
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(const SnackBar(content: Text("Logged out successfully")));
+      return false;
+    }
+  }
 }

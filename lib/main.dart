@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -7,6 +8,7 @@ import 'package:shopit/features/products/model/favoriteview_model.dart';
 import 'package:shopit/features/products/model/productview_moderl.dart';
 import 'package:shopit/features/products/repository/product_repo.dart';
 import 'package:shopit/features/products/service/product_api.dart';
+import 'package:shopit/features/products/view/home.dart';
 import 'package:shopit/screens/Auth/firebase_options.dart';
 import 'package:shopit/screens/Auth/Authscreen.dart';
 
@@ -23,20 +25,16 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-       
         Provider(create: (_) => ProductApi()),
 
-       
         Provider(
           create: (context) =>
               ProductRepository(api: context.read<ProductApi>()),
         ),
 
-      
         ChangeNotifierProvider(create: (_) => FavoriteViewModel()),
         ChangeNotifierProvider(create: (_) => CartViewModel()),
 
-        
         ChangeNotifierProvider(
           create: (context) =>
               ProductViewModel(context.read<ProductRepository>()),
@@ -52,7 +50,20 @@ class MyApp extends StatelessWidget {
           useMaterial3: true,
         ),
 
-        home: const AuthScreen(),
+        home: StreamBuilder(
+          stream: FirebaseAuth.instance.authStateChanges(),
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return const Scaffold(
+                body: Center(child: CircularProgressIndicator()),
+              );
+            }
+            if (snapshot.hasData) {
+              return homepage();
+            }
+            return const AuthScreen();
+          },
+        ),
       ),
     );
   }

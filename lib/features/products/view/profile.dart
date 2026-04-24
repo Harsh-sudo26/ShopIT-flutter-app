@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:http/http.dart';
+import 'package:provider/provider.dart';
+import 'package:shopit/features/products/model/auth_viewmodel.dart';
 
 class Profile extends StatelessWidget {
   const Profile({super.key});
@@ -6,7 +9,14 @@ class Profile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: const Center(child: Text('Profile Content')),
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () async {
+            await context.read<AuthViewModel>().signout(context);
+          },
+          child: Text("Logout"),
+        ),
+      ),
     );
   }
 }
