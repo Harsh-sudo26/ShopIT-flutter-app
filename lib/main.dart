@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shopit/features/products/repository/Auth_repository.dart';
 import 'package:shopit/features/products/viewmodel/auth_viewmodel.dart';
 import 'package:shopit/features/products/viewmodel/cartview_model.dart';
 import 'package:shopit/features/products/viewmodel/favoriteview_model.dart';
@@ -38,7 +39,9 @@ class MyApp extends StatelessWidget {
           create: (context) =>
               ProductRepository(api: context.read<ProductApi>()),
         ),
-
+         ChangeNotifierProvider(
+          create: (_) => AuthViewModel(AuthService() as AuthRepository),
+        ),
        
         ChangeNotifierProvider<ProductViewModel>(
           create: (context) =>
@@ -48,9 +51,7 @@ class MyApp extends StatelessWidget {
         // Other ViewModels
         ChangeNotifierProvider(create: (_) => FavoriteViewModel()),
         ChangeNotifierProvider(create: (_) => CartViewModel()),
-        ChangeNotifierProvider(
-          create: (_) => AuthViewModel(AuthService()),
-        ),
+       
       ],
 
       child: MaterialApp(

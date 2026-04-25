@@ -74,17 +74,20 @@ class _SignupViewState extends State<SignupView> {
                   ),
                 ),
                 onPressed: () async {
-                  final success = await authViewModel.signup(
-                    email.text,
-                    password.text,
-                    context,
+                  final vm = context.read<AuthViewModel>();
+
+                  final success = await vm.signup(
+                    email: email.text.trim(),
+                    password: password.text.trim(),
                   );
 
                   if (success) {
-                    await authViewModel.signup(
-                      email as String,
-                      password as String,
-                      context,
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(content: Text("Signup Successful")),
+                    );
+                  } else {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(content: Text(vm.error ?? "Signup Failed")),
                     );
                   }
                 },

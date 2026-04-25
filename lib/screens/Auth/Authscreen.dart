@@ -1,4 +1,3 @@
-// ignore: file_names
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shopit/features/products/viewmodel/auth_viewmodel.dart';
@@ -11,22 +10,22 @@ class AuthScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final vm = context.watch<AuthViewModel>();
-
+   final vm = context.watch<AuthViewModel>();
+    final selectedIndex = vm.selectedIndex;
     return Scaffold(
       body: Column(
         children: [
           const SizedBox(height: 60),
 
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: const AuthToggle(),
+          const Padding(
+            padding: EdgeInsets.all(8.0),
+            child: AuthToggle(),
           ),
 
           const SizedBox(height: 20),
 
           Expanded(
-            child: vm.selectedIndex == 0
+            child: selectedIndex == 0
                 ? const LoginView()
                 : const SignupView(),
           ),

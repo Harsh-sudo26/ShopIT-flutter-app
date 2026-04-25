@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:http/http.dart';
 import 'package:provider/provider.dart';
 import 'package:shopit/features/products/viewmodel/auth_viewmodel.dart';
 
@@ -11,9 +12,11 @@ class Profile extends StatelessWidget {
       body: Center(
         child: ElevatedButton(
           onPressed: () async {
-            await context.read<AuthViewModel>().logout(context);
+            await context.read<AuthViewModel>().logout();
+
+            Navigator.pushReplacementNamed(context, "/login");
           },
-          child: Text("Logout"),
+          child: const Text("Logout"),
         ),
       ),
     );
