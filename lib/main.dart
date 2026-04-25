@@ -1,16 +1,24 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:shopit/features/products/repository/Auth_repository.dart';
-import 'package:shopit/features/products/repository/product_repo.dart';
+
 import 'package:shopit/features/products/service/Authservices/Auth_service.dart';
+import 'package:shopit/features/products/repository/Auth_repository.dart';
+import 'package:shopit/features/products/viewmodel/auth_viewmodel.dart';
+
 import 'package:shopit/features/products/service/product_api.dart';
-import 'package:shopit/features/products/view/home.dart';
-import 'package:shopit/features/products/viewmodel/auth_viewmodel.dart' show AuthViewModel;
+import 'package:shopit/features/products/repository/product_repo.dart';
 import 'package:shopit/features/products/viewmodel/cartview_model.dart';
-import 'package:shopit/features/products/viewmodel/favoriteview_model.dart' show FavoriteViewModel;
-import 'package:shopit/features/products/viewmodel/productview_moderl.dart' show ProductViewModel;
+import 'package:shopit/features/products/viewmodel/favoriteview_model.dart';
+import 'package:shopit/features/products/viewmodel/productview_moderl.dart';
+
+import 'package:shopit/features/products/view/home.dart';
 import 'package:shopit/screens/Auth/Authscreen.dart';
+
+void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  runApp(const MyApp());
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -22,14 +30,11 @@ class MyApp extends StatelessWidget {
         Provider<AuthService>(create: (_) => AuthService()),
 
         Provider<AuthRepository>(
-          create: (context) => AuthRepository(
-            context.read<AuthService>(),
-          ),
+          create: (context) => AuthRepository(context.read<AuthService>()),
         ),
 
         ChangeNotifierProvider<AuthViewModel>(
-          create: (context) =>
-              AuthViewModel(context.read<AuthRepository>()),
+          create: (context) => AuthViewModel(context.read<AuthRepository>()),
         ),
 
         Provider<ProductApi>(create: (_) => ProductApi()),
@@ -56,7 +61,6 @@ class MyApp extends StatelessWidget {
   }
 }
 
-
 class AuthGate extends StatelessWidget {
   const AuthGate({super.key});
 
@@ -71,7 +75,7 @@ class AuthGate extends StatelessWidget {
           );
         }
 
-        if (snapshot.hasData && snapshot.data != null) {
+        if (snapshot.hasData) {
           return const Homepage();
         }
 
