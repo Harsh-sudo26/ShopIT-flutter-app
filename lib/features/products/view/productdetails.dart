@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:shopit/features/products/viewmodel/cartview_model.dart';
+import 'package:shopit/features/products/viewmodel/cart_viewmodel.dart';
 import 'package:shopit/features/products/viewmodel/products_model.dart';
 import 'package:shopit/widget/%20button.dart';
 // import 'package:shopit/widget/button.dart';

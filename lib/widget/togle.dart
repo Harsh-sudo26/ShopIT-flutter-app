@@ -8,9 +8,39 @@ class AuthToggle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final selectedIndex = context.select<AuthViewModel, int>(
+    final selectedIndex = context.select<UIStateViewModel, int>(
       (vm) => vm.selectedIndex,
     );
+
+    void onTap(int index) {
+      context.read<UIStateViewModel>().switchTab(index);
+      context.read<AuthViewModel>().clearError(); // clear error safely
+    }
+
+    Widget tab(String text, int index) {
+      final isActive = selectedIndex == index;
+
+      return Expanded(
+        child: GestureDetector(
+          onTap: () => onTap(index),
+          child: Container(
+            padding: const EdgeInsets.symmetric(vertical: 10),
+            decoration: BoxDecoration(
+              color: isActive ? Colors.blue : Colors.transparent,
+              borderRadius: BorderRadius.circular(40),
+            ),
+            child: Center(
+              child: Text(
+                text,
+                style: TextStyle(
+                  color: isActive ? Colors.white : Colors.black54,
+                ),
+              ),
+            ),
+          ),
+        ),
+      );
+    }
 
     return Container(
       padding: const EdgeInsets.all(5),
@@ -18,54 +48,7 @@ class AuthToggle extends StatelessWidget {
         borderRadius: BorderRadius.circular(40),
         color: const Color(0xFFE5E5EA),
       ),
-      child: Row(
-        children: [
-          Expanded(
-            child: GestureDetector(
-              onTap: () => context.read<UIStateViewModel>().switchTab(0),
-              child: Container(
-                padding: const EdgeInsets.symmetric(vertical: 10),
-                decoration: BoxDecoration(
-                  color: selectedIndex == 0 ? Colors.blue : Colors.transparent,
-                  borderRadius: BorderRadius.circular(40),
-                ),
-                child: Center(
-                  child: Text(
-                    "Sign In",
-                    style: TextStyle(
-                      color: selectedIndex == 0 ? Colors.white : Colors.black54,
-                    ),
-                  ),
-                ),
-              ),
-            ),
-          ),
-          Expanded(
-            child: GestureDetector(
-              onTap: () => context.read<UIStateViewModel>().switchTab(1),
-              child: Container(
-                padding: const EdgeInsets.symmetric(vertical: 10),
-                decoration: BoxDecoration(
-                  color: selectedIndex == 1
-                      ? Colors.blue
-                      : const Color.fromARGB(0, 8, 5, 156),
-                  borderRadius: BorderRadius.circular(40),
-                ),
-                child: Center(
-                  child: Text(
-                    "Create Account",
-                    style: TextStyle(
-                      color: selectedIndex == 1
-                          ? const Color.fromARGB(255, 255, 255, 255)
-                          : Colors.black54,
-                    ),
-                  ),
-                ),
-              ),
-            ),
-          ),
-        ],
-      ),
+      child: Row(children: [tab("Sign In", 0), tab("Create Account", 1)]),
     );
   }
 }

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:shopit/features/products/viewmodel/cartview_model.dart';
-import 'package:shopit/features/products/viewmodel/favoriteview_model.dart';
-import 'package:shopit/features/products/viewmodel/productview_moderl.dart';
+import 'package:shopit/features/products/viewmodel/cart_viewmodel.dart';
+import 'package:shopit/features/products/viewmodel/favorite_viewmodel.dart';
+import 'package:shopit/features/products/viewmodel/product_viewmoderl.dart';
 import 'package:shopit/features/products/view/productdetails.dart';
 import 'package:shopit/widget/%20button.dart';
 
