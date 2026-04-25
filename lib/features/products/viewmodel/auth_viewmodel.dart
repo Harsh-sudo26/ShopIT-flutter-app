@@ -1,4 +1,5 @@
-import 'package:flutter/widgets.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:shopit/features/products/repository/Auth_repository.dart';
 
 class AuthViewModel extends ChangeNotifier {
@@ -56,7 +57,7 @@ class AuthViewModel extends ChangeNotifier {
     }
   }
 
-  Future<void> logout() async {
+ Future<void> logout() async {
     await repository.logout();
-  }
+  } 
 }
