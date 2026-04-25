@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shopit/features/products/viewmodel/Uistateview.dart';
 import 'package:shopit/features/products/viewmodel/auth_viewmodel.dart';
 
 class AuthToggle extends StatelessWidget {
@@ -23,7 +24,7 @@ class AuthToggle extends StatelessWidget {
         children: [
           Expanded(
             child: GestureDetector(
-              onTap: () => vm.switchTab(0),
+              onTap: () => context.read<UIStateViewModel>().switchTab(0),
               child: Container(
                 padding: const EdgeInsets.symmetric(vertical: 10),
                 decoration: BoxDecoration(
@@ -43,7 +44,7 @@ class AuthToggle extends StatelessWidget {
           ),
           Expanded(
             child: GestureDetector(
-              onTap: () => vm.switchTab(1),
+              onTap: () => context.read<UIStateViewModel>().switchTab(1),
               child: Container(
                 padding: const EdgeInsets.symmetric(vertical: 10),
                 decoration: BoxDecoration(

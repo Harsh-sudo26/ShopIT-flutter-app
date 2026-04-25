@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shopit/features/products/viewmodel/Uistateview.dart';
 import 'package:shopit/features/products/viewmodel/auth_viewmodel.dart';
 import 'package:shopit/screens/Auth/login.dart';
 import 'package:shopit/screens/Auth/signup.dart';
@@ -11,7 +12,9 @@ class AuthScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
    final vm = context.watch<AuthViewModel>();
-    final selectedIndex = vm.selectedIndex;
+      final selectedIndex = context.select<UIStateViewModel, int>(
+  (vm) => vm.selectedIndex,
+);
     return Scaffold(
       body: Column(
         children: [
