@@ -78,15 +78,9 @@ class _LoginViewState extends State<LoginView> {
                         password: password.text.trim(),
                       );
 
-                      if (success != null) {
                         ScaffoldMessenger.of(context).showSnackBar(
                           const SnackBar(content: Text("Login Success")),
                         );
-                      } else {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(content: Text("Login Failed")),
-                        );
-                      }
                     },
                   ),
           ],
