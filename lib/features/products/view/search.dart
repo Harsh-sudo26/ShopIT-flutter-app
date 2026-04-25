@@ -12,7 +12,6 @@ class Search extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final favvm = context.watch<FavoriteViewModel>();
-    int quantity = 1;
 
     return SingleChildScrollView(
       child: Consumer<ProductViewModel>(

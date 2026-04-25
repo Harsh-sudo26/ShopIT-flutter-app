@@ -1,7 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:shopit/features/products/repository/Auth_repository.dart';
-import 'package:shopit/features/products/viewmodel/Uistateview.dart';
 
 class AuthViewModel extends ChangeNotifier {
   final AuthRepository repository;
@@ -58,8 +57,8 @@ class AuthViewModel extends ChangeNotifier {
     }
   }
 
- Future<void> logout() async {
-    await repository.logout();
-  } 
-
+  Future<void> logout() async {
+    final FirebaseAuth _auth = FirebaseAuth.instance;
+    await _auth.signOut();
+  }
 }

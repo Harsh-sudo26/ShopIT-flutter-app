@@ -12,8 +12,6 @@ class AuthToggle extends StatelessWidget {
       (vm) => vm.selectedIndex,
     );
 
-    final vm = context.read<AuthViewModel>();
-
     return Container(
       padding: const EdgeInsets.all(5),
       decoration: BoxDecoration(

@@ -73,14 +73,11 @@ class _LoginViewState extends State<LoginView> {
                     onPressed: () async {
                       final vm = context.read<AuthViewModel>();
 
-                      final success = await vm.login(
+                      await vm.login(
                         email: email.text.trim(),
                         password: password.text.trim(),
                       );
 
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(content: Text("Login Success")),
-                        );
                     },
                   ),
           ],

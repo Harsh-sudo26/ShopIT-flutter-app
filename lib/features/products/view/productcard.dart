@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:shopit/features/products/viewmodel/auth_viewmodel.dart';
 import 'package:shopit/features/products/viewmodel/cartview_model.dart';
 import 'package:shopit/features/products/viewmodel/favoriteview_model.dart';
 import 'package:shopit/features/products/view/productdetails.dart';
@@ -13,7 +12,7 @@ class Productcard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final favvm = context.watch<FavoriteViewModel>();
-    final vm = context.watch<AuthViewModel>();
+
     return Consumer<ProductViewModel>(
       builder: (context, vm, child) {
         if (vm.isLoading) {

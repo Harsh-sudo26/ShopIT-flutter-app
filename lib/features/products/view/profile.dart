@@ -1,6 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart';
 import 'package:provider/provider.dart';
+import 'package:shopit/features/products/service/Authservices/Auth_service.dart';
 import 'package:shopit/features/products/viewmodel/auth_viewmodel.dart';
 
 class Profile extends StatelessWidget {
@@ -13,8 +14,6 @@ class Profile extends StatelessWidget {
         child: ElevatedButton(
           onPressed: () async {
             await context.read<AuthViewModel>().logout();
-
-            Navigator.pushReplacementNamed(context, "/login");
           },
           child: const Text("Logout"),
         ),
