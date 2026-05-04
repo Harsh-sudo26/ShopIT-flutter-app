@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:shopit/features/products/viewmodel/Uistateview.dart';
-import 'package:shopit/features/products/viewmodel/auth_viewmodel.dart';
+import 'package:shopit/Data/model/Uistateview.dart';
+import 'package:shopit/Presentaions/Viewmodel/auth_viewmodel.dart';
 
 class AuthToggle extends StatelessWidget {
   const AuthToggle({super.key});

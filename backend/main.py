@@ -2,13 +2,15 @@ from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from typing import List
 
+from sympy import Product
+
 app = FastAPI()
 
 @app.get("/")
 def home():
     return {"message": "API is running 🚀"}
 
-class Product(BaseModel):
+class  getProduct(BaseModel):
     id: int
     name: str
     price: float
@@ -145,3 +147,5 @@ def get_product(product_id: int):
 def add_product(product: Product):
     products.append(product.dict())
     return {"message": "Product added successfully"}
+
+# cartsection
