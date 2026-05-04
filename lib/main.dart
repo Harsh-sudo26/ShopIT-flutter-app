@@ -7,19 +7,18 @@ import 'package:shopit/Presentaions/View/Auth/Authscreen.dart';
 
 import 'Presentaions/View/Auth/firebase_options.dart';
 
-// Auth
+
 import 'package:shopit/Data/service/Authservices/Auth_service.dart';
 import 'package:shopit/Data/repository/Auth_repository.dart';
 import 'package:shopit/Presentaions/Viewmodel/auth_viewmodel.dart';
 
-// Products
+
 import 'package:shopit/Data/service/product_api.dart';
 import 'package:shopit/Data/repository/product_repo.dart';
 import 'package:shopit/Presentaions/Viewmodel/product_viewmoderl.dart';
 import 'package:shopit/Presentaions/Viewmodel/cart_viewmodel.dart';
 import 'package:shopit/Presentaions/Viewmodel/favorite_viewmodel.dart';
 
-// UI
 import 'package:shopit/Presentaions/View/home/home.dart';
 
 
