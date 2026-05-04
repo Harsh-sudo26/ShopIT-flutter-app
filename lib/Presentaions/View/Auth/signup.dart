@@ -27,62 +27,64 @@ class _SignupViewState extends State<SignupView> {
     final authViewModel = context.watch<AuthViewModel>();
 
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Text(
-              "Create Account",
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(height: 10),
-            Text(
-              "Sign up to continue",
-              style: Theme.of(context).textTheme.bodyMedium,
-            ),
-
-            const SizedBox(height: 20),
-
-            Textfield(
-              icon: const Icon(Icons.email),
-              hinttext: 'Enter Email',
-              rowtext: '',
-              controller: email,
-            ),
-
-            Textfield(
-              icon: const Icon(Icons.lock),
-              hinttext: 'Enter Password',
-              rowtext: '',
-              controller: password,
-            ),
-
-            const SizedBox(height: 40),
-
-            if (authViewModel.isLoading)
-              const CircularProgressIndicator()
-            else
-              buttonsim(
-                simplebtncolor: Colors.blue,
-                simplebuttontext: const Text(
-                  "Sign Up",
-                  style: TextStyle(
-                    fontSize: 18,
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                onPressed: () async {
-                  final vm = context.read<AuthViewModel>();
-                  
-                  await vm.signup(
-                    email: email.text.trim(),
-                    password: password.text.trim(),
-                  );
-                },
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(16),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Text(
+                "Create Account",
+                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
               ),
-          ],
+              const SizedBox(height: 10),
+              Text(
+                "Sign up to continue",
+                style: Theme.of(context).textTheme.bodyMedium,
+              ),
+
+              const SizedBox(height: 20),
+
+              Textfield(
+                icon: const Icon(Icons.email),
+                hinttext: 'Enter Email',
+                rowtext: '',
+                controller: email,
+              ),
+
+              Textfield(
+                icon: const Icon(Icons.lock),
+                hinttext: 'Enter Password',
+                rowtext: '',
+                controller: password,
+              ),
+
+              const SizedBox(height: 40),
+
+              if (authViewModel.isLoading)
+                const CircularProgressIndicator()
+              else
+                buttonsim(
+                  simplebtncolor: Colors.blue,
+                  simplebuttontext: const Text(
+                    "Sign Up",
+                    style: TextStyle(
+                      fontSize: 18,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  onPressed: () async {
+                    final vm = context.read<AuthViewModel>();
+
+                    await vm.signup(
+                      email: email.text.trim(),
+                      password: password.text.trim(),
+                    );
+                  },
+                ),
+            ],
+          ),
         ),
       ),
     );
